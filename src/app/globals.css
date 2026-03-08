@@ -1,0 +1,93 @@
+@import "tailwindcss";
+@reference "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+}
+
+:root {
+  --foreground-rgb: 237, 237, 237;
+  --background-start-rgb: 0, 0, 0;
+  
+  /* Defaults */
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-surface: rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --base-font-size: 16px;
+  --theme-accent: #3b82f6;
+}
+
+/* Font Size Logic */
+[data-size="small"] { --base-font-size: 14px; }
+[data-size="medium"] { --base-font-size: 16px; }
+[data-size="large"] { --base-font-size: 18px; }
+
+html { font-size: var(--base-font-size); }
+
+/* Theme Overrides */
+[data-theme="liquid-glass"] {
+  --glass-surface: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --theme-accent: #ec4899;
+}
+
+[data-theme="neon-pulse"] {
+  --glass-surface: rgba(0, 255, 255, 0.03);
+  --glass-border: rgba(0, 255, 255, 0.4);
+  --theme-accent: #00f2ff;
+  --glass-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #050505;
+  overflow-x: hidden;
+  transition: background 0.5s ease, font-size 0.2s ease;
+}
+
+.glassPanel {
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glassPanel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  border-color: var(--theme-accent);
+}
+
+.liquidButton {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.liquidButton:hover {
+  background: var(--theme-accent);
+  box-shadow: 0 0 20px var(--theme-accent);
+}
+
+.static-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+[data-theme="liquid-glass"] .static-blob { opacity: 0.25; }
+[data-theme="neon-pulse"] .static-blob { filter: blur(150px); opacity: 0.1; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
