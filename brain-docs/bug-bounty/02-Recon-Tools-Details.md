@@ -1,101 +1,107 @@
 # 02 – Recon Tools (Hinglish) – Detailed Beginner Guide
 
-**Recon** yaani *reconnaissance* us phase ko kehte hain jahan aap target ka map banate ho – kaunse sub‑domains exist karte hain, kaunse ports khule hain, kaunse technology stack use ho rahi hai, etc. Ye data aapko later ke vulnerability testing ke liye direction deta hai.
+**Recon** yaani *reconnaissance* is phase me aap target ka **attack surface** map karte ho – kaunse sub‑domains, ports, directories, aur technologies publicly accessible hain. Ye data aapke later exploitation steps ko focused banata hai, time waste kam karta hai, aur false positives ko reduce karta hai.
 
----
-
-## क्यों Recon जरूरी है?
-- **Scope identification** – aapko pata chalega ki kaunse sub‑domains/paths *in‑scope* hain.
-- **Attack surface reduction** – sirf jo visible services hain unhi pe focus karoge, time bachega.
-- **Automation foundation** – aage ke automated scanners (nikto, sqlmap, etc.) ke liye pehle ki data ki zaroorat hoti hai.
+## क्यों Recon ज़रूरी है?
+- **Scope confirmation** – पता चलता है कि कौन से assets *in‑scope* हैं।
+- **Attack surface reduction** – सिर्फ open services ko test करो, बाकी ignore करो.
+- **Automation foundation** – कई scanners (sqlmap, xsser) को सही target list चाहिए; recon वो लिस्ट देता है.
 
 ---
 
 ## 2.1 Sub‑domain Enumeration (Subdomains ka pata lagana)
-| Tool | क्या करता है? | कमांड (example) | कब use करो |
-|------|---------------|----------------|------------|
-| **Sublist3r** | Multiple public sources (crt.sh, VirusTotal) se sub‑domains fetch karta hai. | `sublist3r -d target.com -o subdomains.txt` | Quick start, low‑resource.
-| **Amass** | Passive + active enumeration, DNS bruteforce, DNS‑zone transfer checks. | `amass enum -d target.com -o amass.txt` | Detailed recon, when you need comprehensive list.
-| **Assetfinder** | Simple tool – only sub‑domains, fast. | `assetfinder --subs-only target.com > assets.txt` | Fast, when limited time ho.
-| **MassDNS** | High‑speed DNS resolver – bulk lookups ke liye. | `massdns -r resolvers.txt -t A -q subdomains.txt -o S > results.txt` | When you already have a big list of possible sub‑domains.
+Sub‑domains अक्सर एक बड़ी कंपनी के अलग‑अलग प्रोडक्ट या environment को expose करते हैं (dev., api., admin., आदि). इन्हें enumerate करने के लिए कई tools और techniques हैं.
 
-**How to use:**
-1. Install tool (`pip install sublist3r` ya `apt install amass`).
-2. Run command, output file me domain list aayegi.
-3. `cat *.txt | sort -u > all_subdomains.txt` – duplicate remove karo.
+| Tool | क्यों use? | Quick command | Output |
+|------|-----------|--------------|--------|
+| **Sublist3r** | कई public sources (crt.sh, VirusTotal) से जल्दी list | `sublist3r -d target.com -o subdomains.txt` | `subdomains.txt` – एक लाइन‑per‑domain
+| **Amass** | Passive + active enumeration, DNS‑zone transfer checks | `amass enum -d target.com -o amass.txt` | Detailed list, includes IPs if found
+| **Assetfinder** | Ultra‑fast, केवल sub‑domains | `assetfinder --subs-only target.com > assets.txt` | Simple list, no duplicates
+| **MassDNS** | बड़ी लिस्ट को एक साथ resolve करने के लिए fast DNS resolver | `massdns -r resolvers.txt -t A -q subdomains.txt -o S > results.txt` | `results.txt` – domain + IP mapping
 
----
-
-## 2.2 Wayback Machine & Archive.org (Historic URLs)
-- **Why:** Old versions of the site may expose hidden endpoints (admin panels, backup files).
-- **Tools:**
-  - **waybackurls** – simple python script jo `https://web.archive.org/` se URLs scrape karta hai.
-  - **gau** (GetAllUrls) – multiple archives (Wayback, CommonCrawl, etc.) se URLs pull karta hai.
-- **Commands:**
+**How to run:**
+1. Install (`pip install sublist3r`, `apt install amass`, `go get -u github.com/tomnomnom/assetfinder`).
+2. Run tools, combine outputs:
 ```bash
-waybackurls target.com > wayback.txt
-
-gau --providers wayback,commoncrawl target.com > gau.txt
+cat subdomains.txt amass.txt assets.txt | sort -u > all_subdomains.txt
 ```
-- **Next step:** `cat wayback.txt gau.txt | sort -u > historical_urls.txt`
+3. Verify live hosts (optional) with `httprobe` or `naabu`.
 
 ---
 
-## 2.3 Port Scanning & Service Fingerprinting (Ports aur services ka pata lagana)
-| Tool | क्या करता है? | कमांड | कब इस्तेमाल?
-|------|---------------|--------|-----------|
-| **Nmap** | TCP SYN scan, version detection, OS guessing. | `nmap -sS -sV -p- -T4 target.com -oN nmap.txt` | General purpose, detailed report.
-| **Masscan** | Ultra‑fast port scanner (millions per second). | `masscan -p1-65535 target.com --rate=1000 -oX masscan.xml` | When you want a quick “open ports” list, then feed to Nmap for service detection.
-| **Rustscan** | Fast port discovery + pipes to Nmap automatically. | `rustscan -a target.com -b 5000 -- -sV -oN rustscan.txt` | Simpler syntax, good for large IP ranges.
+## 2.2 Wayback Machine & Archive.org (Historical URLs)
+- **Why:** पुरानी versions में hidden admin panels, backup files, या old API endpoints रह सकते हैं.
+- **Tools:**
+  - **waybackurls** – Wayback Machine से सभी संभावित URLs लेता है.
+    ```bash
+    waybackurls target.com > wayback.txt
+    ```
+  - **gau** (GetAllUrls) – कई sources (Wayback, CommonCrawl, etc.) aggregate करता है.
+    ```bash
+    gau --providers wayback,commoncrawl target.com > gau.txt
+    ```
+- **Combine & dedupe:**
+```bash
+cat wayback.txt gau.txt | sort -u > historic_urls.txt
+```
+- Use `grep`/`awk` later to pull interesting paths (admin, login, .git).
+
+---
+
+## 2.3 Port Scanning & Service Fingerprinting
+Port scan आपको बताता है कि target पर कौन‑कौन se TCP/UDP services चल रही हैं, और क्या version information उपलब्ध है.
+
+| Tool | कब use? | Command (example) | What you get |
+|------|--------|-------------------|--------------|
+| **Nmap** | Detailed scan, OS & version detection | `nmap -sS -sV -p- -T4 target.com -oN nmap.txt` | Open ports, service versions, OS guess.
+| **Masscan** | Ultra‑fast scan of entire port range (million/second) | `masscan -p1-65535 target.com --rate=5000 -oX masscan.xml` | List of open ports (XML). Feed to Nmap for version detection later.
+| **Rustscan** | Fast port discovery + automatic Nmap pipe | `rustscan -a target.com -b 5000 -- -sV -oN rustscan.txt` | Open ports with version info in one step.
 
 **Typical workflow:**
-1. `masscan` ya `rustscan` se open ports list banaye.
-2. `nmap -sV -iL <portlist>` se service version details lein.
-3. Result ko `grep`/`awk` se filter karke specific services (e.g., `http`, `ssh`) nikale.
+1. Run masscan for speed.
+2. Feed results to nmap: `masscan -p1-65535 target.com -oX - | nmap -sV -iL - -oN detailed.txt`.
+3. Filter for interesting services (`grep -i "http"`).
 
 ---
 
-## 2.4 Directory & File Brute‑Forcing (Hidden pages/folders dhundhna)
-- **Why:** Many bugs (XSS, LFI, admin panels) hidden directories mein hoti hain.
-- **Tools & Quick Start:**
-  - **Dirsearch** (Python):
-    ```bash
-    python3 dirsearch.py -u https://target.com -e php,js,html -x 403,404
-    ```
-    *`-e`* file extensions, *`-x`* status codes ignore.
-  - **Gobuster** (Go):
-    ```bash
-    gobuster dir -u https://target.com -w /usr/share/wordlists/dirb/common.txt -x php,js,txt
-    ```
-  - **FFUF** (Fast web fuzzer):
-    ```bash
-    ffuf -u https://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,204,302
-    ```
-    *`-mc`* – only show these status codes.
-- **How to run:** Choose wordlist (`SecLists/Discovery/Web-Content`), set extensions, run. Results file me discovered paths.
+## 2.4 Directory & File Brute‑Forcing (Hidden endpoints)
+Many bugs reside in *unlinked* files – admin panels, backup scripts, test endpoints.
+
+| Tool | क्या करता है? | Example command |
+|------|---------------|-----------------|
+| **Dirsearch** (Python) | Wordlist‑based directory fuzzing | `python3 dirsearch.py -u https://target.com -e php,js,html -x 403,404` |
+| **Gobuster** (Go) | Fast, multithreaded dir/file brute‑force | `gobuster dir -u https://target.com -w /usr/share/wordlists/dirb/common.txt -x php,js,txt` |
+| **FFUF** (Fast web fuzzer) | Flexible, supports status‑code filtering | `ffuf -u https://target.com/FUZZ -w /usr/share/wordlists/dirb/common.txt -mc 200,302` |
+| **gobuster dns** | Sub‑domain brute‑force (if wordlist available) | `gobuster dns -d target.com -w subdomains.txt` |
+
+**Wordlist recommendation:** Use `SecLists/Discovery/Web-Content/common.txt` for generic fuzzing, and `SecLists/Discovery/DNS/subdomains-top1million-5000.txt` for DNS.
 
 ---
 
-## 2.5 Technology Fingerprinting (Stack ka pata lagana)
-- **Why:** Knowing "is it PHP, Node, WordPress?" helps you pick relevant exploits.
-- **Tools:**
-  - **Wappalyzer** – Chrome extension, point and click UI.
-  - **WhatWeb** – CLI; quick output.
-    ```bash
-    whatweb -v https://target.com > whatweb.txt
-    ```
-  - **BuiltWith.com** – manual web UI for deep dive.
-- **Output:** Usually shows framework, CMS, server software, JavaScript libraries.
+## 2.5 Technology Fingerprinting (Know the stack)
+Knowing if a site runs WordPress, Django, Node.js, etc., helps you pick relevant vulnerability checks.
+- **Wappalyzer** – Chrome/Firefox extension, click‑and‑see.
+- **WhatWeb** – CLI, gives detailed tech stack.
+  ```bash
+  whatweb -v https://target.com > whatweb.txt
+  ```
+- **BuiltWith** – Web UI for deeper analysis (sometimes requires sign‑up).
+- **whatcms** – lightweight tool (`whatcms -url https://target.com`).
 
 ---
 
 ## 2.6 Open‑Source Intelligence (OSINT) – Extra Nuggets
-- **Google Dorking** – special search queries to uncover hidden admin pages, config files.
-  - Example: `site:target.com inurl:admin`.
-- **Shodan** – IoT/servers ka global search engine. Use `shodan host <IP>` to see open services.
-- **Hakrawler** – recursive crawler to map internal links.
+- **Google Dorking** – special search queries to expose admin panels, config files, or exposed `.git` directories.
+  - Example: `site:target.com inurl:admin`
+- **Shodan** – IoT & server search engine; useful for finding open services, exposed databases.
+  - Example: `shodan host 203.0.113.5`
+- **Hakrawler** – crawler to enumerate linked URLs inside a domain.
   ```bash
   hakrawler -url https://target.com -depth 3 -plain -output urls.txt
+  ```
+- **crt.sh** – Certificate Transparency log search for sub‑domains.
+  ```bash
+  curl "https://crt.sh/?q=%25.target.com&output=json" | jq -r '.[].name_value' | sort -u > ct_subdomains.txt
   ```
 
 ---
@@ -103,36 +109,35 @@ gau --providers wayback,commoncrawl target.com > gau.txt
 ## 2.7 Simple Automation Script (Bash) – One‑liner Recon Wrapper
 ```bash
 #!/usr/bin/env bash
+# quick‑run recon for a single target
 TARGET=$1
-if [ -z "$TARGET" ]; then echo "Usage: $0 <target.com>"; exit 1; fi
+if [[ -z "$TARGET" ]]; then echo "Usage: $0 <target.com>"; exit 1; fi
 
-# Subdomains
+# 1. Subdomains
 sublist3r -d $TARGET -o subdomains.txt
 amass enum -d $TARGET -o amass.txt
 cat subdomains.txt amass.txt | sort -u > all_subs.txt
 
-# Ports (Rustscan -> Nmap)
+# 2. Port scan (rustscan + nmap)
 rustscan -a $TARGET -b 5000 -- -sV -oN rustscan.txt
 
-# Directory brute force (Dirsearch)
+# 3. Directory brute force (dirsearch)
 python3 dirsearch.py -u https://$TARGET -e php,js,html -x 403,404 -o dirsearch.txt
 
-# Tech fingerprint (WhatWeb)
+# 4. Tech fingerprint
 whatweb -v https://$TARGET > whatweb.txt
 
-echo "Recon complete. Files: subdomains.txt, all_subs.txt, rustscan.txt, dirsearch.txt, whatweb.txt"
+echo "--- Recon complete ---"
+echo "Files generated: subdomains.txt, all_subs.txt, rustscan.txt, dirsearch.txt, whatweb.txt"
 ```
-- Save as `recon.sh`, `chmod +x recon.sh`, run `./recon.sh target.com`.
+- Save as `recon.sh`, make executable (`chmod +x recon.sh`), run `./recon.sh target.com`.
 
 ---
 
-### 📚 Further Reading / Tools
-- **PortSwigger Academy – Scanning & Enumeration** (free labs)
-- **OWASP Amass – Documentation**
-- **SecLists** – massive wordlist collection (`https://github.com/danielmiessler/SecLists`).
+### 📚 Recommended Resources & Wordlists
+- **PortSwigger Academy – “Scanning and Enumeration”** (free labs)
+- **OWASP Amass – Documentation** (official website)
+- **SecLists** – massive collection of wordlists (`https://github.com/danielmiessler/SecLists`).
+- **Awesome Bug Bounty** – curated list of tools (`https://github.com/nomi-sec/awesome-bugbounty`).
 
-Ab aapko har tool ka purpose, basic command, aur kab use karna hai, sab clear ho gaya hoga. Recon ke baad aage ke modules (vulnerability types, exploitation, reporting) aapko deeper level pe le jayenge.
-
----
-
-*Happy hunting, bhai!*
+Now you have a solid recon foundation. Next step: **Vulnerability Types** – explore common bugs you’ll actually exploit. 🚀
