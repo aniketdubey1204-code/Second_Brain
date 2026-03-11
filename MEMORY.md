@@ -78,3 +78,10 @@
 ---
 
 _Last updated: 2026-03-08_
+
+## 📦 Real Repo
+- URL: https://github.com/aniketdubey1204-code/Second_Brain
+
+## 🚀 Vercel Deployment
+- URL: https://vercel.com/anikets-projects-251f2b78/second-brain-final/deployments
+- URL: https://github.com/aniketdubey1204-code/Second_Brain
