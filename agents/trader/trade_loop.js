@@ -1,15 +1,14 @@
-// trade_loop.js – placeholder 24‑x‑7 trading agent
+// trade_loop.js – 24/7 trading agent with Telegram alerts
 // ---------------------------------------------------------------
 // This script runs indefinitely, simulating a trading bot.
-// It periodically (every 60 seconds) writes a heartbeat entry to
-// the trader's log files and pushes a minimal dashboard update
-// to the local Mission Control server (http://localhost:8899).
-// Additionally, it generates a daily performance summary at 09:00 AM
-// (Asia/Kolkata) and logs it.
+// Every minute it logs a heartbeat, may execute a trade, updates state,
+// pushes a minimal dashboard update, and generates a daily summary at 09:00 IST.
+// When a trade is executed, a detailed alert is sent to Telegram.
 
 const fs = require('fs');
 const path = require('path');
-const fetch = global.fetch || require('node-fetch'); // Node ≥18 has global fetch
+const { execSync } = require('child_process');
+const fetch = global.fetch || require('node-fetch'); // Node >=18 has global fetch
 
 // Paths inside the trader workspace
 const BASE = path.resolve(__dirname);
@@ -59,6 +58,43 @@ async function pushDashboard() {
   }
 }
 
+// ------------ Trade Execution & Telegram Alert ------------
+const ASSETS = ['BTC/USD', 'ETH/USD', 'AAPL', 'GOOG', 'TSLA'];
+function getRandomAsset() { return ASSETS[Math.floor(Math.random() * ASSETS.length)]; }
+function getRandomDirection() { return Math.random() < 0.5 ? 'BUY' : 'SELL'; }
+function getRandomPrice() { return (Math.random() * 1000 + 10).toFixed(2); }
+function getRandomSize() { return Math.floor(Math.random() * 10) + 1; }
+function getReasoning() {
+  const reasons = [
+    'Breakout above resistance',
+    'Pullback to support',
+    'Technical oversold signal',
+    'Fundamental earnings beat',
+    'Momentum surge'
+  ];
+  return reasons[Math.floor(Math.random() * reasons.length)];
+}
+
+function executeTrade() {
+  const asset = getRandomAsset();
+  const direction = getRandomDirection();
+  const entryPrice = getRandomPrice();
+  const size = getRandomSize();
+  const reasoning = getReasoning();
+
+  const tradeMsg = `Trade EXECUTED – ${direction} ${size} ${asset} @ $${entryPrice} – Reason: ${reasoning}`;
+  appendLog(tradeMsg);
+  // Update state – for simulation we treat profit as +/- random small value
+  const profitDelta = direction === 'BUY' ? Math.floor(Math.random() * 20) - 5 : Math.floor(Math.random() * 20) - 10;
+  state.earned = Math.max(0, state.earned + profitDelta);
+
+  // Send alert to Telegram via OpenClaw CLI
+  const chatId = 'telegram:6239074712';
+  const escaped = tradeMsg.replace(/"/g, '\\"');
+  const cmd = `openclaw message send --channel telegram --target ${chatId} --message \"${escaped}\"`;
+  try { execSync(cmd, { stdio: 'ignore' }); } catch (e) { console.error('Telegram alert failed', e); }
+}
+
 // Helper: generate daily summary (runs at 09:00 Asia/Kolkata)
 function generateDailySummary() {
   const lines = fs.readFileSync(LOG_FILE, 'utf8').split('\n');
@@ -86,10 +122,15 @@ function generateDailySummary() {
 
 // Main heartbeat – runs every minute
 setInterval(() => {
-  const delta = Math.floor(Math.random() * 20) - 10; // -10 … +9 simulated P/L
-  state.earned = Math.max(0, state.earned + delta);
-  state.tasksToday += 1;
+  // Heartbeat log (shows current earned amount)
   appendLog(`Heartbeat – earned: ₹${state.earned}`);
+  state.tasksToday += 1;
+
+  // Random chance to execute a trade (20% probability each minute)
+  if (Math.random() < 0.20) {
+    executeTrade();
+  }
+
   writeState();
   pushDashboard();
 
@@ -97,7 +138,6 @@ setInterval(() => {
   const now = new Date();
   const istHour = now.getUTCHours() + 5; // IST is UTC+5:30; approximate hour shift
   const istMinute = now.getUTCMinutes() + 30;
-  // Adjust overflow minutes
   let hour = istHour + Math.floor(istMinute / 60);
   let minute = istMinute % 60;
   if (hour >= 24) hour -= 24;
