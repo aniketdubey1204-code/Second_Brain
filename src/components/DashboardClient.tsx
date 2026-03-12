@@ -67,7 +67,7 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
              <span>Neural Interface Active</span>
           </div>
 
-          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter mb-6 text-white drop-shadow-2xl leading-[0.9] uppercase break-all sm:break-normal">
+          <h1 className="glitch text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter mb-6 text-white drop-shadow-2xl leading-[0.9] uppercase break-all sm:break-normal" data-text="Brain v2">
             Brain <span className="text-blue-500/80">v2</span>
           </h1>
           
@@ -76,6 +76,8 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
               Secure hyper-repository for <span className="text-white font-bold border-b-2 border-blue-500/50 pb-1">Aniket Dubey</span>. Synchronized neural documentation and daily cognitive logs.
             </p>
             
+            <button className="neon-button mt-6">Enter the Second Brain</button>
+
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full px-4">
                <div className="glassPanel !p-2 !rounded-2xl flex items-center gap-2 pr-6 border-white/5 w-full sm:w-auto flex-1">
                   <div className="p-3 bg-white/5 rounded-xl text-white/40">
