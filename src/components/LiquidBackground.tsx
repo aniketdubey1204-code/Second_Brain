@@ -10,6 +10,7 @@ export default function LiquidBackground() {
     script.onload = () => {
       // @ts-ignore
 // The bundle attaches tsParticles to window
+      // @ts-ignore
       if (window.tsParticles) {
         window.tsParticles.load('tsparticles', {
           fpsLimit: 60,
