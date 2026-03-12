@@ -8,7 +8,8 @@ export default function LiquidBackground() {
     script.src = 'https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js';
     script.async = true;
     script.onload = () => {
-      // @ts-ignore – the bundle attaches tsParticles to window
+      // @ts-ignore
+// The bundle attaches tsParticles to window
       if (window.tsParticles) {
         window.tsParticles.load('tsparticles', {
           fpsLimit: 60,
