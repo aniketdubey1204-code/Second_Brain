@@ -30,38 +30,38 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
       <div className="max-w-7xl mx-auto py-8 px-6 lg:px-12 relative z-10 pb-24">
         
         {/* Header Stats Bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 px-8 py-4 glassPanel border-accent/20 shadow-[0_0_20px_var(--theme-accent)] shadow-accent/10">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 px-4 sm:px-8 py-4 glassPanel border-accent/20 shadow-[0_0_20px_var(--theme-accent)] shadow-accent/10">
+          <div className="hidden sm:flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Activity size={14} className="text-accent pulse-stable" />
               <span className="text-[10px] uppercase tracking-widest font-black text-accent/60 whitespace-nowrap">Core: Nominal</span>
             </div>
-            <div className="h-4 w-px bg-accent/20 hidden sm:block" />
+            <div className="h-4 w-px bg-accent/20" />
             <div className="flex items-center gap-2">
               <ShieldCheck size={14} className="text-accent" />
               <span className="text-[10px] uppercase tracking-widest font-black text-accent/60 whitespace-nowrap">Sync: Secure</span>
             </div>
           </div>
           
-          <div className="flex items-center gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
-             <div className="flex flex-col items-center sm:items-start group">
-                <span className="text-text/30 whitespace-nowrap group-hover:text-accent transition-colors">Neural Nodes</span>
-                <span className="text-accent">{slugs.length} Units</span>
+          <div className="flex items-center gap-4 sm:gap-8 text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-black w-full sm:w-auto justify-around">
+             <div className="flex flex-col items-center group">
+                <span className="text-text/30 whitespace-nowrap group-hover:text-accent transition-colors">Nodes</span>
+                <span className="text-accent">{slugs.length}</span>
              </div>
-             <div className="flex flex-col items-center sm:items-start group">
-                <span className="text-text/30 whitespace-nowrap group-hover:text-secondary transition-colors">Bug Bounties</span>
-                <span className="text-secondary">{bugBounties} Exploits</span>
+             <div className="flex flex-col items-center group">
+                <span className="text-text/30 whitespace-nowrap group-hover:text-secondary transition-colors">Bounties</span>
+                <span className="text-secondary">{bugBounties}</span>
              </div>
-             <div className="flex flex-col items-center sm:items-start group">
+             <div className="flex flex-col items-center group">
                 <span className="text-text/30 whitespace-nowrap group-hover:text-stable transition-colors">Daily Logs</span>
-                <span className="text-stable">{dailyLogs} Cycles</span>
+                <span className="text-stable">{dailyLogs}</span>
              </div>
           </div>
         </div>
 
-        {/* Live Data Ticker */}
-        <div className="mb-12 px-8 py-2 border-y border-accent/10 ticker-wrap bg-accent/5">
-          <div className="ticker-content text-[10px] font-black text-accent/40 uppercase tracking-[0.2em]">
+        {/* Live Data Ticker - hidden on mobile to save space */}
+        <div className="hidden sm:block mb-8 border-y border-accent/10 ticker-wrap bg-accent/5 overflow-hidden">
+          <div className="ticker-content text-[10px] font-black text-accent/40 uppercase tracking-[0.2em] whitespace-nowrap">
             SYSTEM_STATUS: ONLINE // SYNCING_NEURAL_CACHED_NODES... [OK] // ENCRYPTING_SESSION_STREAM... [ACTIVE] // THREADING_COGNITIVE_LOGS_PART_IX... [COMPLETE] // TRACING_BUG_BOUNTY_EXPLOITS... [WAITING]
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
              <span>Neural Interface v2.0.4</span>
           </div>
 
-          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter mb-6 text-text leading-[0.9] uppercase glitch-text glitch-active drop-shadow-[0_0_30px_var(--theme-accent)] shadow-accent/30">
+          <h1 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter mb-4 sm:mb-6 text-text leading-[0.9] uppercase glitch-text glitch-active drop-shadow-[0_0_30px_var(--theme-accent)] shadow-accent/30">
             Brain <span className="text-accent/80">v2</span>
           </h1>
           
@@ -110,7 +110,7 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
         </div>
 
         {/* Dynamic Grid */}
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredSlugs.length > 0 ? (
             filteredSlugs.map((slug) => (
               <div key={slug} className="h-full">

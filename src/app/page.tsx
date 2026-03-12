@@ -6,7 +6,7 @@ export default function Home() {
   const slugs = getDocSlugs();
 
   return (
-    <main className="min-h-screen bg-transparent text-white selection:bg-blue-500/30 selection:text-blue-200">
+    <main className="min-h-screen bg-transparent text-text">
        <DashboardClient slugs={slugs} />
     </main>
   );
