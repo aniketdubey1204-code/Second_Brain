@@ -17,30 +17,35 @@
   --glass-border: rgba(0, 242, 255, 0.2);
   --glass-surface: rgba(10, 10, 10, 0.7);
   --glass-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  --panel-radius: 12px;
+  --panel-blur: 20px;
   --base-font-size: 16px;
   --theme-accent: #00f2ff;
   --theme-secondary: #bc13fe;
   --theme-stable: #39ff14;
 }
 
-[data-theme='neon-pulse'] {
-  --glass-border: rgba(255, 7, 58, 0.2);
-  --glass-surface: rgba(20, 5, 5, 0.7);
-  --glass-shadow: 0 0 30px rgba(255, 7, 58, 0.1);
-  --theme-accent: #ff073a;
-  --theme-secondary: #ffb300;
-  --theme-stable: #00ffcc;
+[data-theme='bio-symbiote'] {
+  --glass-border: rgba(164, 243, 19, 0.4);
+  --glass-surface: rgba(5, 10, 5, 0.85);
+  --glass-shadow: 0 0 40px rgba(164, 243, 19, 0.15);
+  --panel-radius: 40px; /* Very round, organic feeling */
+  --panel-blur: 10px;
+  --theme-accent: #a4f313; /* Toxic Green */
+  --theme-secondary: #00ffcc; /* Bioluminescent Cyan */
+  --theme-stable: #a4f313;
 }
 
 [data-theme='liquid-glass'] {
-  --glass-border: rgba(0, 255, 204, 0.2);
-  --glass-surface: rgba(5, 15, 20, 0.7);
-  --glass-shadow: 0 0 30px rgba(0, 255, 204, 0.1);
-  --theme-accent: #00ffcc;
-  --theme-secondary: #0077ff;
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-surface: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 119, 255, 0.2);
+  --panel-radius: 24px; /* Clean, tight rounded corners like iOS */
+  --panel-blur: 40px; /* Heavy frosted glass effect */
+  --theme-accent: #0077ff; /* Clean Blue */
+  --theme-secondary: #00ffcc; /* Clean Aqua */
   --theme-stable: #ffffff;
 }
-
 /* CRT Effects */
 .crt-overlay::before {
   content: " ";
@@ -114,9 +119,9 @@ body {
 .glassPanel {
   background: var(--glass-surface);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
+  backdrop-filter: blur(var(--panel-blur));
+  -webkit-backdrop-filter: blur(var(--panel-blur));
+  border-radius: var(--panel-radius);
   border: 1px solid var(--glass-border);
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -125,7 +130,7 @@ body {
 
 .glassPanel:hover {
   border-color: var(--theme-accent);
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--theme-accent) 30%, transparent);
 }
 
 /* Glitch Effect */
