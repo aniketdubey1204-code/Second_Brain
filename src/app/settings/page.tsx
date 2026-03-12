@@ -114,8 +114,8 @@ export default function SettingsPage() {
                    <div className="flex flex-wrap gap-2">
                       {['cyber-dark', 'liquid-glass', 'bio-symbiote'].map(t => (
                         <button key={t} onClick={() => setTheme(t as any)} className={cn(
-                          "px-4 py-2 rounded-xl text-[10px] uppercase font-bold tracking-widest transition-all",
-                          theme === t ? "bg-accent text-black shadow-[0_0_15px_var(--theme-accent)]" : "bg-bg/20 text-text/40 hover:bg-text/10 border border-text/5"
+                          "px-6 py-2.5 rounded-full text-[10px] uppercase font-bold tracking-widest transition-all",
+                          theme === t ? "bg-accent text-black shadow-[0_0_20px_var(--theme-accent)]" : "bg-text/5 text-text/40 hover:bg-text/10 border border-text/5"
                         )}>
                           {t.replace('-', ' ')}
                         </button>
@@ -127,8 +127,8 @@ export default function SettingsPage() {
                    <div className="flex flex-wrap gap-2">
                       {['small', 'medium', 'large'].map(s => (
                         <button key={s} onClick={() => setFontSize(s as any)} className={cn(
-                          "px-4 py-2 rounded-xl text-[10px] uppercase font-bold tracking-widest transition-all",
-                          fontSize === s ? "bg-accent text-black shadow-[0_0_15px_var(--theme-accent)]" : "bg-bg/20 text-text/40 hover:bg-text/10 border border-text/5"
+                          "px-6 py-2.5 rounded-full text-[10px] uppercase font-bold tracking-widest transition-all",
+                          fontSize === s ? "bg-accent text-black shadow-[0_0_20px_var(--theme-accent)]" : "bg-text/5 text-text/40 hover:bg-text/10 border border-text/5"
                         )}>
                           {s}
                         </button>
@@ -182,9 +182,9 @@ export default function SettingsPage() {
                       </div>
                       <span className="text-xs font-mono text-blue-400">42.8 GB / 100 GB</span>
                    </div>
-                   <div className="w-full h-1.5 bg-text/5 rounded-full overflow-hidden">
-                      <div className="w-[42%] h-full bg-gradient-to-r from-blue-600 to-cyan-400" />
-                   </div>
+                    <div className="w-full h-2 bg-text/5 rounded-full overflow-hidden">
+                       <div className="w-[42%] h-full bg-accent" />
+                    </div>
                 </div>
                 <button onClick={() => setActiveAction('Clear Cache')} className="w-full flex items-center justify-between p-5 rounded-2xl bg-red-500/5 border border-red-500/10 hover:bg-red-500/10 transition-all group">
                    <div className="flex items-center gap-3">
@@ -226,13 +226,13 @@ export default function SettingsPage() {
 
        {/* Floating Save Button */}
        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="fixed bottom-10 right-10 z-50">
-          <button onClick={executeSync} disabled={isSyncing} className={cn(
-              "flex items-center gap-4 px-10 py-5 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] shadow-[0_25px_50px_rgba(37,99,235,0.4)] transition-all active:scale-95",
-              isSyncing ? "bg-green-600 text-text" : "bg-gradient-to-r from-blue-600 to-blue-500 hover:from-white hover:to-white hover:text-black text-text"
-            )}>
-             <Zap size={20} className={cn("fill-current", isSyncing && "animate-ping")} />
-             {isSyncing ? "Synchronizing..." : "Execute Synchronization"}
-          </button>
+           <button onClick={executeSync} disabled={isSyncing} className={cn(
+               "flex items-center gap-4 px-12 py-5 rounded-full font-black text-sm uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(0,0,0,0.1)] transition-all active:scale-95",
+               isSyncing ? "bg-stable text-black" : "bg-accent text-black hover:scale-105"
+             )}>
+              <Zap size={20} className={cn("fill-current", isSyncing && "animate-ping")} />
+              {isSyncing ? "Synchronizing..." : "Execute Synchronization"}
+           </button>
        </motion.div>
 
        {/* Action Modal */}

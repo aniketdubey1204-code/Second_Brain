@@ -182,20 +182,38 @@ export default function LiquidBackground() {
             }
           }
       } else if (theme === "liquid-glass") {
-          // Minimalist. Draw large slow floating orbs for frosted glass effect
+          // iOS 26 Aesthetic: Vibrant ambient orbs with soft blending
+          ctx.save();
+          ctx.globalCompositeOperation = 'lighter';
+          
+          const colors = [
+            '120, 100, 255', // Purple
+            '80, 160, 255',  // Blue
+            '255, 100, 200', // Pink
+            '100, 255, 200'  // Cyan-ish
+          ];
+
           for (let i = 0; i < bioCells.length / 2; i++) {
              bioCells[i].update(canvas.width, canvas.height);
-             const r = bioCells[i].radius * 3; // Huge
-             ctx.beginPath();
-             ctx.arc(bioCells[i].x, bioCells[i].y, r, 0, Math.PI * 2);
              
-             const gradient = ctx.createRadialGradient(bioCells[i].x, bioCells[i].y, 0, bioCells[i].x, bioCells[i].y, r);
-             gradient.addColorStop(0, `rgba(${rgbColor}, 0.05)`);
-             gradient.addColorStop(1, `rgba(${rgbColor}, 0)`);
+             // Dynamic color based on index
+             const color = colors[i % colors.length];
+             const r = bioCells[i].radius * (4 + Math.sin(bioCells[i].angle) * 2); // Pulsating size
+             
+             ctx.beginPath();
+             const gradient = ctx.createRadialGradient(
+               bioCells[i].x, bioCells[i].y, 0, 
+               bioCells[i].x, bioCells[i].y, r
+             );
+             gradient.addColorStop(0, `rgba(${color}, 0.12)`);
+             gradient.addColorStop(0.5, `rgba(${color}, 0.04)`);
+             gradient.addColorStop(1, `rgba(${color}, 0)`);
              
              ctx.fillStyle = gradient;
+             ctx.arc(bioCells[i].x, bioCells[i].y, r, 0, Math.PI * 2);
              ctx.fill();
           }
+          ctx.restore();
       }
 
       animationFrameId = requestAnimationFrame(animate);

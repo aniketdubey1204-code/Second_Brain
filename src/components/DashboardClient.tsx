@@ -136,11 +136,11 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
                     </h3>
                     
                     <div className="flex items-center justify-between pt-6 border-t border-accent/10 mt-4">
-                       <div className="flex items-center gap-2 text-[10px] text-accent/40 uppercase tracking-widest font-black">
+                        <div className="px-3 py-1 rounded-full bg-accent/20 border border-accent/30 text-[9px] font-black text-accent uppercase tracking-tighter flex items-center gap-1.5">
                           <Activity size={12} className="pulse-stable" />
                           <span>Linked</span>
-                       </div>
-                       <div className="w-10 h-10 rounded-lg bg-accent/5 border border-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all duration-300">
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-accent/5 border border-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-black transition-all duration-300">
                           <ChevronRight size={20} />
                        </div>
                     </div>
@@ -149,14 +149,14 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
               </div>
             ))
           ) : (
-            <div className="col-span-full py-32 text-center glassPanel !rounded-2xl border-accent/10 shadow-[inner_0_0_50px_color-mix(in_srgb,var(--theme-accent)_5.0%,transparent)]">
+            <div className="col-span-full py-32 text-center glassPanel border-accent/10 shadow-[inner_0_0_50px_color-mix(in_srgb,var(--theme-accent)_5.0%,transparent)]">
               <Brain className="w-24 h-24 text-accent/10 mx-auto mb-10 animate-pulse" />
               <h3 className="text-4xl font-black text-text/80 mb-4 tracking-tighter uppercase">No Nodes Found</h3>
               <p className="text-accent/40 mb-8 font-mono text-xs">[ Search query \"{searchQuery}\" returned zero results ]</p>
               <button 
-                onClick={() => setSearchQuery('')}
-                className="neon-button px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] rounded-lg"
-              >
+                 onClick={() => setSearchQuery('')}
+                 className="neon-button px-10 py-4 text-[10px] font-black uppercase tracking-[0.3em] rounded-full"
+               >
                 Reset Buffer
               </button>
             </div>

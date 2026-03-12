@@ -23,9 +23,10 @@
 
   --glass-border: rgba(0, 242, 255, 0.2);
   --glass-surface: rgba(10, 10, 10, 0.7);
-  --glass-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-  --panel-radius: 12px;
-  --panel-blur: 20px;
+  --glass-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
+  --glass-highlight: transparent;
+  --panel-radius: 16px;
+  --panel-blur: 15px;
   --base-font-size: 16px;
   --theme-accent: #00f2ff;
   --theme-secondary: #bc13fe;
@@ -33,33 +34,46 @@
 }
 
 [data-theme='bio-symbiote'] {
+  --foreground-rgb: 164, 243, 19;
+  --background-rgb: 3, 8, 3;
+
+  /* Bio-Symbiote Defaults */
   --theme-bg: #030803;
-  --theme-text: #eaffea;
+  --theme-text: #a4f313;
   --theme-font: var(--font-mono);
 
-  --glass-border: rgba(164, 243, 19, 0.4);
-  --glass-surface: rgba(5, 10, 5, 0.85);
+  --theme-accent: #a4f313;
+  --theme-secondary: #1a3a0a;
+  --theme-stable: #2d5a1e;
+
+  --glass-border: rgba(164, 243, 19, 0.2);
+  --glass-surface: rgba(3, 8, 3, 0.85);
   --glass-shadow: 0 0 40px rgba(164, 243, 19, 0.15);
-  --panel-radius: 40px; /* Very round, organic feeling */
-  --panel-blur: 10px;
-  --theme-accent: #a4f313; /* Toxic Green */
-  --theme-secondary: #00ffcc; /* Bioluminescent Cyan */
-  --theme-stable: #a4f313;
+  --glass-highlight: rgba(164, 243, 19, 0.05);
+  --panel-radius: 20px;
+  --panel-blur: 12px;
 }
 
 [data-theme='liquid-glass'] {
-  --theme-bg: #eef2f5;
+  --foreground-rgb: 26, 32, 44;
+  --background-rgb: 238, 242, 245;
+  
+  /* iOS 26 Aesthetic: Light lavender/blue base */
+  --theme-bg: #f5f7fa; 
   --theme-text: #1a202c;
   --theme-font: var(--font-sans);
 
-  --glass-border: rgba(255, 255, 255, 0.8);
-  --glass-surface: rgba(255, 255, 255, 0.4);
-  --glass-shadow: 0 8px 32px rgba(0, 119, 255, 0.1);
-  --panel-radius: 24px; /* Clean, tight rounded corners like iOS */
-  --panel-blur: 40px; /* Heavy frosted glass effect */
-  --theme-accent: #0077ff; /* Clean Blue */
-  --theme-secondary: #00ffcc; /* Clean Aqua */
-  --theme-stable: #ffffff;
+  --theme-accent: #5e5ce6; /* Apple Indigo */
+  --theme-secondary: #ff2d55; /* Apple Rose */
+  --theme-stable: #34c759; /* Apple Green */
+
+  /* Deep Refraction & Glass Polish */
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-surface: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.8);
+  --panel-radius: 40px; /* Pill/Round */
+  --panel-blur: 50px;
 }
 /* CRT Effects */
 .crt-overlay::before {
@@ -129,6 +143,18 @@ body {
   font-family: var(--theme-font, 'JetBrains Mono', monospace);
   overflow-x: hidden;
   transition: background 0.5s ease, color 0.3s ease, font-size 0.2s ease;
+  min-height: 100vh;
+}
+
+/* Subtle grain texture for that Apple premium feel */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 50;
 }
 
 /* Font size via data-size attribute */
@@ -155,9 +181,26 @@ body {
   overflow: hidden;
 }
 
+/* Rim lighting / Specular highlight for glass */
+.glassPanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--glass-highlight), transparent 40%, transparent 60%, var(--glass-highlight));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.5;
+}
+
 .glassPanel:hover {
   border-color: var(--theme-accent);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--theme-accent) 30%, transparent);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--theme-accent) 20%, transparent);
+  transform: translateY(-2px);
 }
 
 /* Glitch Effect */

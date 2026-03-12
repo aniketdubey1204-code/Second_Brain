@@ -89,7 +89,7 @@ export default function Sidebar() {
             </div>
             <input 
               placeholder="System search..." 
-              className="w-full bg-bg/40 rounded-lg py-2.5 pl-9 pr-3 text-xs text-text placeholder-text/20 outline-none border border-accent/10 focus:border-accent/50 transition-all focus:shadow-[0_0_15px_var(--theme-accent)] shadow-accent/10 font-mono"
+              className="w-full bg-bg/40 rounded-full py-2.5 pl-9 pr-3 text-xs text-text placeholder-text/20 outline-none border border-accent/10 focus:border-accent/50 transition-all focus:shadow-[0_0_15px_var(--theme-accent)] shadow-accent/10 font-mono"
             />
           </div>
 
@@ -99,7 +99,7 @@ export default function Sidebar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-300 relative group border border-transparent",
+                  "flex items-center gap-3 px-4 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 relative group border border-transparent",
                   pathname === item.href 
                     ? "bg-accent/10 text-accent border-accent/30 shadow-[0_0_15px_var(--theme-accent)] shadow-accent/10" 
                     : "text-text/40 hover:text-text hover:bg-accent/5 hover:border-accent/20"
@@ -123,7 +123,7 @@ export default function Sidebar() {
         {/* Footer */}
         <div className="mt-auto border-t border-accent/10 p-4 flex flex-col gap-2">
           {session && (
-            <div className="flex items-center gap-3 px-3 py-3 bg-accent/5 rounded-lg border border-accent/10 mb-2 group/user">
+            <div className="flex items-center gap-3 px-3 py-3 bg-accent/5 rounded-full border border-accent/10 mb-2 group/user">
               {session.user?.image ? (
                 <img src={session.user.image} alt="Avatar" className="w-8 h-8 rounded-full border border-accent/30 relative z-10 grayscale group-hover/user:grayscale-0 transition-all" />
               ) : (
