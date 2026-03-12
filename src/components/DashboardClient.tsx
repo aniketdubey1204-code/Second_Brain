@@ -83,8 +83,8 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full px-4">
-               <div className="glassPanel !p-2 flex items-center gap-2 pr-6 border-accent/10 w-full sm:w-auto flex-1 focus-within:border-accent/50 transition-all shadow-[inset_0_0_10px_var(--theme-accent)] shadow-accent/5">
-                  <div className="p-3 bg-accent/5 rounded-md text-accent/40">
+               <div className="glassPanel !p-2 flex items-center gap-2 pr-6 border-accent/10 w-full sm:w-auto flex-1 focus-within:border-accent/50 transition-all shadow-[inset_0_0_10px_var(--theme-accent)] shadow-accent/5 rounded-full">
+                  <div className="p-3 bg-accent/5 rounded-full text-accent/40">
                      <Search size={18} />
                   </div>
                   <input 
