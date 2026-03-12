@@ -29,7 +29,7 @@ export default function MetricsRain() {
     };
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = '#00f2ff';
@@ -37,8 +37,8 @@ export default function MetricsRain() {
 
       for (let i = 0; i < drops.length; i++) {
         const text = codes[Math.floor(Math.random() * codes.length)];
-        // Varying opacity for depth
-        const opacity = Math.random() * 0.3 + 0.1;
+        // Increased opacity for better visibility
+        const opacity = Math.random() * 0.5 + 0.3;
         ctx.fillStyle = `rgba(0, 242, 255, ${opacity})`;
         
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -72,8 +72,8 @@ export default function MetricsRain() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[1] opacity-20"
-      style={{ filter: 'blur(0.5px)' }}
+      className="fixed inset-0 pointer-events-none z-[1] opacity-40"
+      style={{ filter: 'blur(0.3px)' }}
     />
   );
 }
