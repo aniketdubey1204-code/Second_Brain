@@ -24,7 +24,7 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
   }, [slugs, searchQuery]);
 
   return (
-    <div className="relative w-full min-h-full font-mono">
+    <div className="relative w-full min-h-full font-body">
       
       {/* Content Layer */}
       <div className="max-w-7xl mx-auto py-8 px-6 lg:px-12 relative z-10 pb-24">
@@ -68,7 +68,7 @@ export default function DashboardClient({ slugs }: DashboardClientProps) {
 
         {/* Hero Section */}
         <div className="mb-16 md:mb-24 text-center relative flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-[0_0_15px_var(--theme-accent)] shadow-accent/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-8 shadow-[0_0_15px_var(--theme-accent)] shadow-accent/10 transition-all hover:bg-accent/20 cursor-default">
              <Terminal size={12} />
              <span>Neural Interface v2.0.4</span>
           </div>
