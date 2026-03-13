@@ -2,4 +2,4 @@
 
 Capital: 0 USD (simulated)
 Projects: 0
-Tasks Today: 0
+Tasks Today: 25
