@@ -303,7 +303,7 @@ class DesktopController:
         
         Steps:
         1. Activate the app window; if not found, launch via Run dialog.
-        2. Wait until the window becomes active (polling up to *timeout* seconds).
+        2. Wait until the window becomes the active window (polling up to *timeout* seconds).
         3. If *new_tab* is True, send ``Ctrl+T``; otherwise ensure the address bar is focused.
         4. Focus address bar (Ctrl+L), type the URL, and press Enter.
         5. Return True on success, False on failure.
@@ -337,6 +337,25 @@ class DesktopController:
         self.press('enter')
         logger.info(f"Opened URL '{url}' in {app_name}")
         return True
+
+    # ---------- High‑level auto‑open helper ----------
+    def open_url(self, url: str, new_tab: bool = True, timeout: float = 5.0) -> bool:
+        """Open a URL using the preferred browser.
+        
+        Preference order:
+        1. **Comet** – primary browser as per user instruction.
+        2. **Chrome** – fallback if Comet cannot be activated.
+        
+        The method will attempt to open the URL in Comet first and, on failure,
+        automatically fallback to Chrome, without requiring any extra steps from
+        the caller.
+        """
+        # Try Comet first
+        if self.open_url_in_app('Comet', url, new_tab=new_tab, timeout=timeout):
+            return True
+        # Fallback to Chrome if Comet failed
+        logger.warning('Falling back to Chrome for URL opening')
+        return self.open_url_in_app('Chrome', url, new_tab=new_tab, timeout=timeout)
     
     def get_active_window(self) -> Optional[str]:
         """Get title of currently focused window."""
