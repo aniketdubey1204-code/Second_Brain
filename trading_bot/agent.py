@@ -33,13 +33,16 @@ class TradingAgent:
         else:
             self.strategy_params = {'type': 'trend'}  # default
         self.strategy = build_strategy(self.strategy_params)
+        # System monitor for self‑diagnosis & self‑healing
+        from .system_monitor import SystemMonitor
+        self.monitor = SystemMonitor(self.config)
 
     def run_cycle(self):
         # Fetch market data for each symbol (latest price & 1m candles)
         snapshots = {}
         for symbol in self.config.get('symbols', []):
             price = get_price(symbol)
-            ohlcv = get_ohlcv(symbol, timeframe='1m', limit=2)  # last two candles for EMA cross
+            ohlcv = get_ohlcv(symbol, timeframe='1m', limit=30)  # enough candles for ATR and EMA
             indicators = calculate_indicators(ohlcv)
             regime = detect_regime(indicators['price'], indicators['ema50'], indicators['atr'], self.config.get('volatility_threshold', 0.05))
             snapshots[symbol] = {
