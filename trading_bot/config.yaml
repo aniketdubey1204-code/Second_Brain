@@ -1,0 +1,14 @@
+mode: paper  # paper or live
+exchange: binance
+symbols:
+  - BTCUSDT
+  - ETHUSDT
+  - SOLUSDT
+  - MATICUSDT
+risk_per_trade: 0.01  # 1% of account balance per trade
+poll_interval: 60  # seconds between market data fetches
+report_time: "09:00"  # daily report time (HH:MM, 24h, IST)
+volatility_threshold: 0.05  # ATR multiplier to suspend trading
+max_drawdown: 0.15  # 15% drawdown triggers shutdown
+consecutive_loss_limit: 3  # pause after 3 losses
+pause_duration_minutes: 60  # pause length on loss streak
