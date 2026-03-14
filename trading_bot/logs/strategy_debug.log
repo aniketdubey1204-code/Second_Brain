@@ -939,3 +939,17 @@
 2026-03-14T18:40:49.089045Z | SOLUSDT | price:86.94 | ema9:86.96 | ema21:86.95 | rsi:50.4 | decision:none
 2026-03-14T18:40:53.045475Z | MATICUSDT | price:0.38 | ema9:0.38 | ema21:0.38 | rsi:55.8 | decision:none
 2026-03-14T18:40:56.252270Z | MATICUSDT | session:NewYork | regime:sideways | strategy:grid | decision:none
+2026-03-14T18:41:00.388758Z | BTCUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:06.391162Z | ETHUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:08.032159Z | BTCUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:08.407825Z | BTCUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:14.586088Z | SOLUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:16.764067Z | ETHUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:16.768027Z | ETHUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:22.171151Z | MATICUSDT | session:NewYork | regime:sideways | strategy:grid | decision:none
+2026-03-14T18:41:23.460803Z | SOLUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:23.461941Z | SOLUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:27.261032Z | BTCUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
+2026-03-14T18:41:31.548930Z | MATICUSDT | session:NewYork | regime:sideways | strategy:grid | decision:none
+2026-03-14T18:41:31.644323Z | MATICUSDT | session:NewYork | regime:sideways | strategy:grid | decision:none
+2026-03-14T18:41:34.882377Z | ETHUSDT | session:NewYork | regime:high_volatility | strategy:volatility_mean_reversion | decision:none
