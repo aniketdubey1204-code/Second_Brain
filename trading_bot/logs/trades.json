@@ -739,5 +739,31 @@
     "reason": "test_buy",
     "exit_price": 2139.3203000000003,
     "pnl": 193.32666666666668
+  },
+  {
+    "timestamp": "2026-03-14T19:29:27.814016Z",
+    "symbol": "BTCUSDT",
+    "side": "buy",
+    "entry_price": 70671.97,
+    "size": 0.09433254325111778,
+    "stop_loss": 69611.89045,
+    "take_profit": 72792.1291,
+    "fee": 6.673333333333365,
+    "reason": "test_buy",
+    "exit_price": 72792.1291,
+    "pnl": 193.326666666668
+  },
+  {
+    "timestamp": "2026-03-14T19:29:31.905224Z",
+    "symbol": "ETHUSDT",
+    "side": "buy",
+    "entry_price": 2077.62,
+    "size": 3.2087998126060766,
+    "stop_loss": 2046.4556999999998,
+    "take_profit": 2139.9486,
+    "fee": 6.673333333333302,
+    "reason": "test_buy",
+    "exit_price": 2139.9486,
+    "pnl": 193.3266666666667
   }
 ]
