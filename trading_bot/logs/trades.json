@@ -1285,5 +1285,18 @@
     "reason": "test_buy",
     "exit_price": 90.6915,
     "pnl": 193.3266666666667
+  },
+  {
+    "timestamp": "2026-03-15T00:45:23.674346Z",
+    "symbol": "ETHUSDT",
+    "side": "buy",
+    "entry_price": 2090.86,
+    "size": 3.1884806570820854,
+    "stop_loss": 2059.4971,
+    "take_profit": 2153.5858000000003,
+    "fee": 6.673333333333316,
+    "reason": "test_buy",
+    "exit_price": 2153.5858000000003,
+    "pnl": 193.32666666666668
   }
 ]
