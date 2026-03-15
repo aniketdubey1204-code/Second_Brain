@@ -2130,5 +2130,57 @@
     "reason": "test_buy",
     "exit_price": 2183.5382,
     "pnl": 193.3266666666653
+  },
+  {
+    "timestamp": "2026-03-15T12:39:08.642325Z",
+    "symbol": "BTCUSDT",
+    "side": "buy",
+    "entry_price": 71733.22,
+    "size": 0.09293694980744802,
+    "stop_loss": 70657.2217,
+    "take_profit": 73885.2166,
+    "fee": 6.673333333333292,
+    "reason": "test_buy",
+    "exit_price": 73885.2166,
+    "pnl": 193.32666666666537
+  },
+  {
+    "timestamp": "2026-03-15T13:01:54.452706Z",
+    "symbol": "SOLUSDT",
+    "side": "buy",
+    "entry_price": 88.38,
+    "size": 75.43184732594115,
+    "stop_loss": 87.0543,
+    "take_profit": 91.03139999999999,
+    "fee": 6.673333333333344,
+    "reason": "test_buy",
+    "exit_price": 91.03139999999999,
+    "pnl": 193.32666666666665
+  },
+  {
+    "timestamp": "2026-03-15T13:03:02.355033Z",
+    "symbol": "BTCUSDT",
+    "side": "buy",
+    "entry_price": 71672.05,
+    "size": 0.09301626877794922,
+    "stop_loss": 70596.96925,
+    "take_profit": 73822.2115,
+    "fee": 6.673333333333281,
+    "reason": "test_buy",
+    "exit_price": 73822.2115,
+    "pnl": 193.32666666666535
+  },
+  {
+    "timestamp": "2026-03-15T13:03:10.203796Z",
+    "symbol": "SOLUSDT",
+    "side": "buy",
+    "entry_price": 88.38,
+    "size": 75.43184732594115,
+    "stop_loss": 87.0543,
+    "take_profit": 91.03139999999999,
+    "fee": 6.673333333333344,
+    "reason": "test_buy",
+    "exit_price": 91.03139999999999,
+    "pnl": 193.32666666666665
   }
 ]
