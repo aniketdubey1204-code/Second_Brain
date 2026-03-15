@@ -2052,5 +2052,83 @@
     "reason": "test_buy",
     "exit_price": 2181.7769000000003,
     "pnl": 193.3266666666667
+  },
+  {
+    "timestamp": "2026-03-15T11:21:55.247724Z",
+    "symbol": "BTCUSDT",
+    "side": "buy",
+    "entry_price": 71771.13,
+    "size": 0.09288785987717652,
+    "stop_loss": 70694.56305,
+    "take_profit": 73924.2639,
+    "fee": 6.673333333333286,
+    "reason": "test_buy",
+    "exit_price": 73924.2639,
+    "pnl": 193.32666666666537
+  },
+  {
+    "timestamp": "2026-03-15T11:23:10.880670Z",
+    "symbol": "BTCUSDT",
+    "side": "buy",
+    "entry_price": 71759.75,
+    "size": 0.09290259047260664,
+    "stop_loss": 70683.35375,
+    "take_profit": 73912.5425,
+    "fee": 6.673333333333301,
+    "reason": "test_buy",
+    "exit_price": 73912.5425,
+    "pnl": 193.32666666666537
+  },
+  {
+    "timestamp": "2026-03-15T11:45:30.319153Z",
+    "symbol": "SOLUSDT",
+    "side": "buy",
+    "entry_price": 88.45,
+    "size": 75.37214999057825,
+    "stop_loss": 87.12325,
+    "take_profit": 91.10350000000001,
+    "fee": 6.673333333333313,
+    "reason": "test_buy",
+    "exit_price": 91.10350000000001,
+    "pnl": 193.32666666666668
+  },
+  {
+    "timestamp": "2026-03-15T11:46:40.603480Z",
+    "symbol": "ETHUSDT",
+    "side": "buy",
+    "entry_price": 2119.54,
+    "size": 3.145336566739337,
+    "stop_loss": 2087.7469,
+    "take_profit": 2183.1262,
+    "fee": 6.67333333333336,
+    "reason": "test_buy",
+    "exit_price": 2183.1262,
+    "pnl": 193.32666666666807
+  },
+  {
+    "timestamp": "2026-03-15T11:46:44.647463Z",
+    "symbol": "SOLUSDT",
+    "side": "buy",
+    "entry_price": 88.58,
+    "size": 75.26153383005958,
+    "stop_loss": 87.2513,
+    "take_profit": 91.2374,
+    "fee": 6.6733333333333436,
+    "reason": "test_buy",
+    "exit_price": 91.2374,
+    "pnl": 193.32666666666663
+  },
+  {
+    "timestamp": "2026-03-15T11:47:56.805072Z",
+    "symbol": "ETHUSDT",
+    "side": "buy",
+    "entry_price": 2119.94,
+    "size": 3.144743090213227,
+    "stop_loss": 2088.1409,
+    "take_profit": 2183.5382,
+    "fee": 6.673333333333294,
+    "reason": "test_buy",
+    "exit_price": 2183.5382,
+    "pnl": 193.3266666666653
   }
 ]

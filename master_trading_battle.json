@@ -1,9 +1,327 @@
-{"timestamp":"2026-03-15 16:00:00","team":"Team_A","strategy":"Scalper","cumulative_pnl":0.0,"status":"ACTIVE"}\n{"timestamp":"2026-03-15T10:53:33.744Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.64,"status":"ACTIVE"}
-{"timestamp":"2026-03-15T10:53:33.746Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.18,"status":"ACTIVE"}
-{"timestamp":"2026-03-15T10:53:33.747Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.05,"status":"ACTIVE"}
-{"timestamp":"2026-03-15 16:24:12","team":"Team_A","strategy":"Scalper","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":0,"status":"ACTIVE"}
-{"timestamp":"2026-03-15 16:24:14","team":"Team_B","strategy":"Trend","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":0,"status":"IDLE"}
-{"timestamp":"2026-03-15T10:54:33.762Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.19,"status":"ACTIVE"}
-{"timestamp":"2026-03-15T10:54:33.764Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.27,"status":"ACTIVE"}
-{"timestamp":"2026-03-15T10:54:33.765Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.02,"status":"ACTIVE"}
-{"timestamp":"2026-03-15 16:24:42","team":"Team_A","strategy":"Scalper","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":0,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:27:00","team":"Team_A","strategy":"Scalper","cumulative_pnl":0.0,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:27:28","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":15.29,"status":"IDLE"}
+{"timestamp":"2026-03-15T10:57:33.779Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:57:33.780Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.51,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:57:33.781Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.46,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:28:23","team":"Team_B","strategy":"Trend","cumulative_pnl":0,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T10:58:33.793Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.48,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:58:33.794Z","team":"Trend","strategy":"Trend","cumulative_pnl":2.39,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:58:33.794Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.27,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:29:08","team":"Team_B","strategy":"Trend","cumulative_pnl":20.85,"status":"IDLE"}
+{"timestamp":"2026-03-15T10:59:33.815Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.2,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:59:33.816Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.84,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T10:59:33.817Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.34,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:00:33.821Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.25,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:00:33.822Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:00:33.822Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-1.18,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:30:38","team":"Team_B","strategy":"Trend","cumulative_pnl":20.85,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 16:31:23","team":"Team_B","strategy":"Trend","cumulative_pnl":18.34,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:01:33.830Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.15,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:01:33.831Z","team":"Trend","strategy":"Trend","cumulative_pnl":2.35,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:01:33.832Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-1.18,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:02:33.836Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.2,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:02:33.837Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.88,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:02:33.838Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-1.18,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:03:33.849Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:03:33.850Z","team":"Trend","strategy":"Trend","cumulative_pnl":3.42,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:03:33.851Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:04:33.851Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:04:33.852Z","team":"Trend","strategy":"Trend","cumulative_pnl":3.56,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:04:33.852Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.74,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:35:08","team":"Team_B","strategy":"Trend","cumulative_pnl":18.340000000000003,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:05:33.865Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.16,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:05:33.865Z","team":"Trend","strategy":"Trend","cumulative_pnl":4.07,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:05:33.866Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.81,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:35:53","team":"Team_B","strategy":"Trend","cumulative_pnl":27.41,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:06:33.872Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.58,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:06:33.873Z","team":"Trend","strategy":"Trend","cumulative_pnl":3.47,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:06:33.873Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.26,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:07:33.878Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:07:33.878Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.86,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:07:33.879Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.45,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:08:33.889Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.99,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:08:33.890Z","team":"Trend","strategy":"Trend","cumulative_pnl":2.93,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:08:33.891Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.28,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:09:33.892Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.5,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:09:33.892Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.49,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:09:33.893Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.42,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:40:23","team":"Team_B","strategy":"Trend","cumulative_pnl":27.410000000000004,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:10:33.905Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:10:33.906Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.56,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:10:33.907Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.15,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:41:08","team":"Team_B","strategy":"Trend","cumulative_pnl":48.41,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:11:33.908Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.69,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:11:33.909Z","team":"Trend","strategy":"Trend","cumulative_pnl":2.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:11:33.909Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.71,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:12:33.909Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.25,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:12:33.910Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.58,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:12:33.910Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.41,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:42:38","team":"Team_B","strategy":"Trend","cumulative_pnl":48.410000000000004,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 16:43:23","team":"Team_B","strategy":"Trend","cumulative_pnl":47.82,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:13:33.912Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:13:33.913Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.87,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:13:33.913Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.75,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:14:33.912Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:14:33.912Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.36,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:14:33.912Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":-0.11,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:15:33.923Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.77,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:15:33.924Z","team":"Trend","strategy":"Trend","cumulative_pnl":3,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:15:33.925Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.53,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:16:33.931Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.85,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:16:33.932Z","team":"Trend","strategy":"Trend","cumulative_pnl":2.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:16:33.933Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":0.69,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:47:08","team":"Team_B","strategy":"Trend","cumulative_pnl":47.82,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:17:33.938Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.75,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:17:33.940Z","team":"Trend","strategy":"Trend","cumulative_pnl":3.32,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:17:33.940Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":1.52,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:47:53","team":"Team_B","strategy":"Trend","cumulative_pnl":51.95,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:18:33.939Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.63,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:18:33.940Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.98,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:18:33.941Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:19:33.942Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.27,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:19:33.942Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.09,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:19:33.943Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:50:08","team":"Team_B","strategy":"Trend","cumulative_pnl":51.95,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:20:33.947Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.15,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:20:33.948Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.22,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:20:33.949Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":1.9,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 16:50:53","team":"Team_B","strategy":"Trend","cumulative_pnl":47.49,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:21:33.960Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.3,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:21:33.961Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.11,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:21:33.961Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":1.81,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:22:33.970Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:22:33.971Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:22:33.972Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.44,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:23:33.985Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":0.05,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:23:33.986Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.08,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:23:33.986Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.25,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:24:33.989Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.08,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:24:33.990Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:24:33.990Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":1.69,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:25:34.003Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.06,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:25:34.004Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.11,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:25:34.005Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.11,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:26:34.015Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.39,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:26:34.015Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.68,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:26:34.016Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.05,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:27:34.017Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.49,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:27:34.019Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.06,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:27:34.019Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.35,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:28:34.032Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:28:34.033Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.83,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:28:34.033Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":3.24,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:29:34.033Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.92,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:29:34.034Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.05,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:29:34.034Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.46,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:30:34.049Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:30:34.050Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.87,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:30:34.050Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.64,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:31:34.058Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.06,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:31:34.059Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.35,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:31:34.059Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":3.56,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:32:34.073Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.21,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:32:34.074Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.95,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:32:34.075Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":2.76,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:33:34.087Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.59,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:33:34.088Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:33:34.088Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":3.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:03:38","team":"Team_B","strategy":"Trend","cumulative_pnl":47.49,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 17:04:23","team":"Team_B","strategy":"Trend","cumulative_pnl":44.2,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:34:34.097Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.29,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:34:34.098Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.96,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:34:34.099Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.2,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:05:08","team":"Team_B","strategy":"Trend","cumulative_pnl":44.2,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:35:34.098Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.79,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:35:34.098Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.97,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:35:34.098Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.31,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:05:53","team":"Team_B","strategy":"Trend","cumulative_pnl":61.27,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:36:34.111Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:36:34.112Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.64,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:36:34.113Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.31,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:06:38","team":"Team_B","strategy":"Trend","cumulative_pnl":61.27,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 17:07:23","team":"Team_B","strategy":"Trend","cumulative_pnl":50.48,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:37:34.116Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.13,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:37:34.117Z","team":"Trend","strategy":"Trend","cumulative_pnl":0,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:37:34.117Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.01,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:38:34.120Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.93,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:38:34.120Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.58,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:38:34.121Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.42,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:39:34.129Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.92,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:39:34.130Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.7,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:39:34.130Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":4.85,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:09:38","team":"Team_B","strategy":"Trend","cumulative_pnl":50.480000000000004,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 17:10:23","team":"Team_B","strategy":"Trend","cumulative_pnl":64.03,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:40:34.140Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.08,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:40:34.141Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:40:34.141Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":5.64,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:41:34.149Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.28,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:41:34.150Z","team":"Trend","strategy":"Trend","cumulative_pnl":0.01,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:41:34.151Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.21,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:42:34.162Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.45,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:42:34.163Z","team":"Trend","strategy":"Trend","cumulative_pnl":1.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:42:34.163Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":5.56,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:12:38","team":"Team_B","strategy":"Trend","cumulative_pnl":64.03,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 17:13:23","team":"Team_B","strategy":"Trend","cumulative_pnl":73.53,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:43:34.174Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.07,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:43:34.175Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.16,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:43:34.175Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.42,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:44:34.188Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:44:34.189Z","team":"Trend","strategy":"Trend","cumulative_pnl":-0.13,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:44:34.190Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.18,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:14:53","team":"Team_B","strategy":"Trend","cumulative_pnl":73.53,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:45:34.189Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:45:34.189Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.02,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:45:34.190Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:15:38","team":"Team_B","strategy":"Trend","cumulative_pnl":81.39,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:46:34.200Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.62,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:46:34.201Z","team":"Trend","strategy":"Trend","cumulative_pnl":-3.77,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:46:34.201Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.22,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:47:34.201Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.39,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:47:34.202Z","team":"Trend","strategy":"Trend","cumulative_pnl":-3.63,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:47:34.202Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:48:34.205Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.03,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:48:34.205Z","team":"Trend","strategy":"Trend","cumulative_pnl":-3.8,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:48:34.206Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.03,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:49:34.206Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.96,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:49:34.206Z","team":"Trend","strategy":"Trend","cumulative_pnl":-4.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:49:34.207Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.97,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:50:34.212Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.29,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:50:34.221Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.77,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:50:34.225Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.53,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:51:34.228Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.52,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:51:34.229Z","team":"Trend","strategy":"Trend","cumulative_pnl":-3.09,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:51:34.229Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.28,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:52:34.235Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.17,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:52:34.236Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.89,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:52:34.236Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.36,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:53:34.247Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.46,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:53:34.248Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.46,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:53:34.248Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.34,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:54:34.255Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.34,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:54:34.256Z","team":"Trend","strategy":"Trend","cumulative_pnl":-4.14,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:54:34.256Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.52,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:25:23","team":"Team_B","strategy":"Trend","cumulative_pnl":81.39,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T11:55:34.270Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.61,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:55:34.272Z","team":"Trend","strategy":"Trend","cumulative_pnl":-5.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:55:34.272Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.57,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:26:08","team":"Team_B","strategy":"Trend","cumulative_pnl":76.04,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:56:34.277Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.23,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:56:34.278Z","team":"Trend","strategy":"Trend","cumulative_pnl":-4.43,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:56:34.278Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.62,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:57:34.281Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.97,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:57:34.282Z","team":"Trend","strategy":"Trend","cumulative_pnl":-3.11,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:57:34.283Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.03,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:27:38","team":"Team_B","strategy":"Trend","cumulative_pnl":76.04,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15 17:28:23","team":"Team_B","strategy":"Trend","cumulative_pnl":75,"status":"IDLE"}
+{"timestamp":"2026-03-15T11:58:34.282Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.16,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:58:34.282Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:58:34.283Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.13,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:59:34.293Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.17,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:59:34.295Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.82,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T11:59:34.296Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.9,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:00:34.297Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-0.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:00:34.298Z","team":"Trend","strategy":"Trend","cumulative_pnl":-1.92,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:00:34.299Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.08,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:01:34.308Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.02,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:01:34.310Z","team":"Trend","strategy":"Trend","cumulative_pnl":-2.65,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:01:34.310Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.84,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:32:08","team":"Team_B","strategy":"Trend","cumulative_pnl":75,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T12:02:34.319Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.43,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:02:34.320Z","team":"Trend","strategy":"Trend","cumulative_pnl":-4.02,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:02:34.320Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.31,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:32:53","team":"Team_B","strategy":"Trend","cumulative_pnl":82.37,"status":"IDLE"}
+{"timestamp":"2026-03-15T12:03:34.322Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.44,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:03:34.323Z","team":"Trend","strategy":"Trend","cumulative_pnl":-5.05,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:03:34.323Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.52,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:04:34.329Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.29,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:04:34.331Z","team":"Trend","strategy":"Trend","cumulative_pnl":-5.45,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:04:34.331Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.65,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:05:34.337Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.7,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:05:34.338Z","team":"Trend","strategy":"Trend","cumulative_pnl":-7.42,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:05:34.338Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.13,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:35:53","team":"Team_B","strategy":"Trend","cumulative_pnl":82.37,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T12:06:34.345Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-2.13,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:06:34.346Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.02,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:06:34.346Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:36:38","team":"Team_B","strategy":"Trend","cumulative_pnl":92.92,"status":"IDLE"}
+{"timestamp":"2026-03-15T12:07:34.354Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.93,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:07:34.355Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.08,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:07:34.355Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.26,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:08:34.355Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.69,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:08:34.356Z","team":"Trend","strategy":"Trend","cumulative_pnl":-8.06,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:08:34.357Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.49,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:09:34.370Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:09:34.371Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.93,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:09:34.371Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.03,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:10:34.369Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.99,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:10:34.370Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.2,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:10:34.371Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.01,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:11:34.382Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-2.4,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:11:34.384Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.55,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:11:34.385Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.25,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:12:34.382Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-2.14,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:12:34.383Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.05,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:12:34.383Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":6.79,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:13:34.392Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.96,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:13:34.392Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.81,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:13:34.393Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.44,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:14:34.401Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.52,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:14:34.401Z","team":"Trend","strategy":"Trend","cumulative_pnl":-11.78,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:14:34.402Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.84,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:15:34.416Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.37,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:15:34.417Z","team":"Trend","strategy":"Trend","cumulative_pnl":-13.18,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:15:34.420Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.65,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:16:34.425Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.71,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:16:34.427Z","team":"Trend","strategy":"Trend","cumulative_pnl":-13.15,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:16:34.428Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":7.9,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:17:34.434Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.57,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:17:34.442Z","team":"Trend","strategy":"Trend","cumulative_pnl":-11.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:17:34.443Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.67,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:18:34.449Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.24,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:18:34.449Z","team":"Trend","strategy":"Trend","cumulative_pnl":-11.77,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:18:34.450Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.3,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:19:34.458Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.71,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:19:34.459Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.95,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:19:34.459Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.85,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:50:09","team":"Team_B","strategy":"Trend","cumulative_pnl":92.92,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T12:20:34.465Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.48,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:20:34.466Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.65,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:20:34.467Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.79,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:50:54","team":"Team_B","strategy":"Trend","cumulative_pnl":91.19,"status":"IDLE"}
+{"timestamp":"2026-03-15T12:21:34.465Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.57,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:21:34.467Z","team":"Trend","strategy":"Trend","cumulative_pnl":-12.53,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:21:34.468Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":11.5,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:22:34.479Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.78,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:22:34.480Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.83,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:22:34.480Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.59,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:53:09","team":"Team_B","strategy":"Trend","cumulative_pnl":91.19,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T12:23:34.485Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.37,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:23:34.489Z","team":"Trend","strategy":"Trend","cumulative_pnl":-11.29,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:23:34.491Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:53:54","team":"Team_B","strategy":"Trend","cumulative_pnl":118.16,"status":"IDLE"}
+{"timestamp":"2026-03-15T12:24:34.498Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.35,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:24:34.499Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.82,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:24:34.500Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.43,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:55:24","team":"Team_B","strategy":"Trend","cumulative_pnl":118.16,"status":"IN_TRADE"}
+{"timestamp":"2026-03-15T12:25:34.508Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.53,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:25:34.509Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:25:34.509Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.96,"status":"ACTIVE"}
+{"timestamp":"2026-03-15 17:56:09","team":"Team_B","strategy":"Trend","cumulative_pnl":119.78,"status":"IDLE"}
+{"timestamp":"2026-03-15T12:26:34.518Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.41,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:26:34.520Z","team":"Trend","strategy":"Trend","cumulative_pnl":-10.89,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:26:34.521Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":10.54,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:27:34.530Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.6,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:27:34.531Z","team":"Trend","strategy":"Trend","cumulative_pnl":-9.1,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:27:34.532Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.63,"status":"ACTIVE"}
+{"cumulative_pnl":0,"status":"ACTIVE","timestamp":"2026-03-15 17:58:32","team":"Team_A","strategy":"Scalper"}
+{"timestamp":"2026-03-15T12:28:34.545Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.2,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:28:34.546Z","team":"Trend","strategy":"Trend","cumulative_pnl":-7.62,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:28:34.547Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.95,"status":"ACTIVE"}
+{"cumulative_pnl":0,"status":"ACTIVE","timestamp":"2026-03-15 17:59:32","team":"Team_A","strategy":"Scalper"}
+{"timestamp":"2026-03-15T12:29:34.558Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.17,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:29:34.559Z","team":"Trend","strategy":"Trend","cumulative_pnl":-7.25,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:29:34.560Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":9.26,"status":"ACTIVE"}
+{"cumulative_pnl":0,"status":"ACTIVE","timestamp":"2026-03-15 18:00:32","team":"Team_A","strategy":"Scalper"}
+{"timestamp":"2026-03-15T12:30:34.569Z","team":"Scalper","strategy":"Scalper","cumulative_pnl":-1.58,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:30:34.571Z","team":"Trend","strategy":"Trend","cumulative_pnl":-8.92,"status":"ACTIVE"}
+{"timestamp":"2026-03-15T12:30:34.571Z","team":"MeanReversion","strategy":"MeanReversion","cumulative_pnl":8.99,"status":"ACTIVE"}

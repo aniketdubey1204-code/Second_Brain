@@ -170,5 +170,9 @@ testNvidiaNim();
 // Periodic master entry every 30 seconds
 
 console.log('Scalping Squad (Team A) started');
+// Heartbeat: write status every 60 seconds even if no trade
+setInterval(() => {
+  writeMaster({cumulative_pnl: cumulativePnL, status: 'ACTIVE'});
+}, 60 * 1000);
 // Keep process alive
 setInterval(()=>{}, 1e9);

@@ -143,4 +143,8 @@ setInterval(() => {
 }, 30 * 1000);
 
 console.log('Reversion Master (Team C) started');
+// Heartbeat: write status every minute even if no trade
+setInterval(() => {
+  writeMaster({cumulative_pnl: cumulativePnL, status: 'ACTIVE'});
+}, 60 * 1000);
 setInterval(()=>{}, 1e9);
