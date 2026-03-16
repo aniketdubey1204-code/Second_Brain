@@ -2828,3 +2828,4 @@
 {"cumulative_pnl":0,"status":"ACTIVE","timestamp":"2026-03-16 16:03:56","team":"Team_A","strategy":"Scalper"}
 {"cumulative_pnl":0,"status":"ACTIVE","timestamp":"2026-03-16 16:03:57","team":"Team_A","strategy":"Scalper"}
 {"timestamp":"2026-03-16 16:04:11","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":192.94,"status":"IDLE"}
+{"timestamp":"2026-03-16 16:04:21","team":"Team_B","strategy":"Trend","cumulative_pnl":50.31,"status":"IN_TRADE"}
