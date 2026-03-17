@@ -26,5 +26,27 @@
     "amount":0.001,
     "entry_price":74233.2,
     "timestamp":"2026-03-17T22:00:00+05:30"
+  },
+  {
+    "asset":"BTCUSDT",
+    "side":"buy",
+    "amount":0.001,
+    "entry_price":74179.00000000,
+    "timestamp":"2026-03-17T22:30:00+05:30"
+  },
+  {
+    "asset":"BTCUSDT",
+    "side":"buy",
+    "amount":0.005,
+    "entry_price":74207.2,
+    "timestamp":"2026-03-17T22:30:00+05:30"
+  }
+,
+  {
+    "asset":"BTCUSDT",
+    "side":"buy",
+    "amount":0.001,
+    "entry_price":74284.8,
+    "timestamp":"2026-03-17T23:00:00+05:30"
   }
 ]
