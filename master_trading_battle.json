@@ -16591,3 +16591,16 @@
 {"timestamp":"2026-03-17 23:01:41","team":"Team_B","strategy":"Trend","cumulative_pnl":200761.98,"status":"IDLE"}
 {"timestamp":"2026-03-17 23:01:41","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":1873553.51,"status":"IDLE"}
 {"timestamp":"2026-03-17 23:01:45","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":3632566.76,"status":"IDLE"}
+{"cumulative_pnl":1873553.51,"status":"ACTIVE","timestamp":"2026-03-17 23:01:55","team":"Team_C","strategy":"MeanReversion"}
+{"cumulative_pnl":3632566.760000001,"status":"ACTIVE","timestamp":"2026-03-17 23:01:59","team":"Team_C","strategy":"MeanReversion"}
+{"timestamp":"2026-03-17 23:02:11","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":1873553.51,"status":"IDLE"}
+{"timestamp":"2026-03-17 23:02:12","team":"Team_B","strategy":"Trend","cumulative_pnl":366708.38000000006,"status":"IN_TRADE"}
+{"timestamp":"2026-03-17 23:02:14","team":"Team_C","strategy":"MeanReversion","cumulative_pnl":3632566.760000001,"status":"REVERTING"}
+{"timestamp":"2026-03-17 23:02:15","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":3632566.76,"status":"REVERTING"}
+{"timestamp":"2026-03-17 23:02:41","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":1873553.51,"status":"IDLE"}
+{"timestamp":"2026-03-17 23:02:45","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":3632566.76,"status":"REVERTING"}
+{"timestamp":"2026-03-17 23:02:49","team":"Team_C","strategy":"MeanReversion","cumulative_pnl":3655876.04,"status":"IDLE"}
+{"timestamp":"2026-03-17 23:02:51","team":"Team_C","strategy":"MeanReversion","cumulative_pnl":1873553.51,"status":"REVERTING"}
+{"cumulative_pnl":1873553.51,"status":"ACTIVE","timestamp":"2026-03-17 23:02:55","team":"Team_C","strategy":"MeanReversion"}
+{"timestamp":"2026-03-17 23:02:57","team":"Team_B","strategy":"Trend","cumulative_pnl":373881.46,"status":"IDLE"}
+{"cumulative_pnl":3655876.040000001,"status":"ACTIVE","timestamp":"2026-03-17 23:02:59","team":"Team_C","strategy":"MeanReversion"}
