@@ -36,9 +36,10 @@
     {"date":"2026-03-17","note":"Analysis performed at 16:42 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied."},
     {"date":"2026-03-17","note":"Analysis performed at 16:45 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied."},
     {"date":"2026-03-17","note":"Analysis performed at 16:48 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied."},
-    {"date":"2026-03-17","note":"Analysis performed at 16:51 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied."}
+    {"date":"2026-03-17","note":"Analysis performed at 16:51 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied."},
+    {"date":"2026-03-17","note":"Analysis performed at 18:15 IST - No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied. Updated analysis entry."}
   ],
   "total_trades_analyzed": 10,
-  "analysis_note": "Analysis performed on 2026-03-17 17:10 IST: Last 10 trades (all BUY) used strategy test_buy. Best strategy: test_buy. Coins traded: BTCUSDT, SOLUSDT, ETHUSDT. No false‑signal coins identified. Most profitable local time window: 21:30‑22:40 IST (evening). Strategy focus increased for test_buy.",
-  "last_analysis": "2026-03-17 17:10 IST"
+  "analysis_note": "Analysis performed on 2026-03-17 18:15 IST: No closed trades in last 10 entries. Unable to compute best strategy, false‑signal coins, or most profitable time of day. No strategy focus adjustment applied.",
+  "last_analysis": "2026-03-17 18:15 IST"
 }

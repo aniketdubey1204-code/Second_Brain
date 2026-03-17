@@ -443,6 +443,28 @@ def self_heal(error_msg, context=""):
         f.write("\n")
 
 # ============================================================
+# Placeholder functions for optional commands
+
+def run_daily_report():
+    # No daily report implemented yet
+    pass
+
+def run_learning_review():
+    # No learning review implemented yet
+    pass
+
+def run_night_pause():
+    # No night pause implemented yet
+    pass
+
+def run_morning_resume():
+    # No morning resume implemented yet
+    pass
+
+def run_weekly_summary():
+    # No weekly summary implemented yet
+    pass
+
 # ENTRY POINT
 # ============================================================
 if __name__ == "__main__":

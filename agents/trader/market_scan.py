@@ -2,7 +2,7 @@ import requests, time, json, math, sys
 from datetime import datetime, timedelta
 
 # Config
-symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT']
+symbols = ['BTCUSD', 'ETHUSD', 'SOLUSD']
 base_url = 'https://api.india.delta.exchange/v2'
 resolution = 15 * 60  # seconds for 15-min candles
 

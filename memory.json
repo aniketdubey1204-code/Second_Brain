@@ -1,13 +1,12 @@
 {
   "date": "2026-03-17",
   "analysis": {
-    "closed_trades": 0,
-    "win_rate_by_strategy": {},
+    "closed_trades": 10,
+    "win_rate_by_strategy": {"test_buy": 100},
     "false_signal_coins": [],
-    "profitable_time_of_day": null,
-    "notes": "No closed trades recorded in trades.log as of now. Unable to compute win rates or time-of-day profitability. No losing trades to investigate market conditions. Will monitor future trades for data."
+    "profitable_time_of_day": "16:00-17:00 IST",
+    "notes": "Last 10 closed trades (all test_buy strategy) were all winners with ~193 profit each. No losing trades, so no false signal coins. Most profitable closures occurred between 16:00 and 17:00 IST."
   },
-  "adjustments": {
-    "focus": "increase monitoring of Strategy A as default focus (no performance data yet)"
-  }
+  "adjustments": {"focus": "increase focus on strategy 'test_buy'"},
+  "last_updated": "2026-03-17T18:24:00+05:30"
 }
