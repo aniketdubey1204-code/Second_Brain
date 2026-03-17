@@ -147,8 +147,31 @@ def detect_regime(adx_val, bb_width, volume_spike, vol_avg):
 def main():
     signals = []
     for sym in symbols:
-        candles = fetch_candles(sym, limit=200)
+        try:
+            candles = fetch_candles(sym, limit=200)
+        except Exception as e:
+            print(f'Error fetching candles for {sym}: {e}', file=sys.stderr)
+            continue
         if len(candles) < 50:
+            # Not enough data, try fallback to coingecko price
+            try:
+                cg_map = {'BTCUSDT': 'bitcoin', 'ETHUSDT': 'ethereum', 'SOLUSDT': 'solana'}
+                cg_id = cg_map.get(sym)
+                if cg_id:
+                    resp = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={cg_id}&vs_currencies=usd")
+                    resp.raise_for_status()
+                    data = resp.json()
+                    price = data.get(cg_id, {}).get('usd')
+                    if price:
+                        signals.append({
+                            'symbol': sym,
+                            'direction': 'LONG',
+                            'strategy': 'fallback',
+                            'regime': 'N/A',
+                            'price': price
+                        })
+            except Exception:
+                pass
             continue
         closes = [c['c'] for c in candles]
         opens = [c['o'] for c in candles]

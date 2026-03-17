@@ -36,28 +36,53 @@ def save_json(fname, data):
         json.dump(data, f, indent=2)
 
 def get_candles(symbol, resolution="15m", count=100):
+    import time
+    from datetime import datetime, timedelta
+    base_url = "https://api.india.delta.exchange"
+    url = f"{base_url}/v2/history/candles"
+    end = int(datetime.now().timestamp())
+    # Calculate start time based on resolution and count
+    if resolution == "5m":
+        start = end - (count * 5 * 60)
+    elif resolution == "15m":
+        start = end - (count * 15 * 60)
+    elif resolution == "1h":
+        start = end - (count * 60 * 60)
+    else:
+        start = end - (count * 15 * 60)
+    params = {
+        "symbol": symbol,
+        "resolution": resolution,
+        "start": str(start),
+        "end": str(end)
+    }
     try:
-        r = requests.get(f"{DELTA_BASE_URL}/v2/history/candles",
-                         params={"symbol": symbol, "resolution": resolution, "count": count}, timeout=10)
-        r.raise_for_status()
-        js = r.json().get("result", [])
-        if not js:
-            return pd.DataFrame()
-        df = pd.DataFrame(js)
-        df.rename(columns={"o":"open","h":"high","l":"low","c":"close","v":"volume","t":"timestamp"}, inplace=True)
-        df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
-        df.set_index("timestamp", inplace=True)
+        response = requests.get(url, params=params, timeout=10)
+        data = response.json().get("result", [])
+        if not data:
+            send_telegram(f"⚠️ No candle data received for {symbol}")
+            return None
+        df = pd.DataFrame(data, columns=["time","open","high","low","close","volume"])
+        df = df.sort_values("time").reset_index(drop=True)
+        df[["open","high","low","close","volume"]] = df[["open","high","low","close","volume"]].astype(float)
+        df["time"] = pd.to_datetime(df["time"], unit="s")
+        df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("Asia/Kolkata")
         return df
-    except Exception:
-        return pd.DataFrame()
+    except Exception as e:
+        send_telegram(f"❌ Error fetching candles for {symbol}: {str(e)}")
+        return None
 
 def get_current_price(symbol):
+    base_url = "https://api.india.delta.exchange"
+    url = f"{base_url}/v2/tickers/{symbol}"
     try:
-        r = requests.get(f"{DELTA_BASE_URL}/v2/tickers/{symbol}", timeout=10)
-        r.raise_for_status()
-        return float(r.json().get("result", {}).get("last_price", 0))
-    except Exception:
-        return 0.0
+        response = requests.get(url, timeout=10)
+        data = response.json()
+        price = float(data["result"]["close"])
+        return price
+    except Exception as e:
+        send_telegram(f"❌ Error fetching price for {symbol}: {str(e)}")
+        return None
 
 def calculate_indicators(df):
     # stub – real logic can be added later
@@ -113,18 +138,40 @@ def run_market_scan():
     bal = load_json("paper_balance.json").get("current_balance", 10000)
     positions = load_json("open_positions.json").get("positions", [])
     daily_pnl = 0.0
+    # Load previous regimes state
+    regime_state = load_json("regime_state.json")
+    current_prices = {}
+    current_regimes = {}
+    regime_change = False
     for sym in SYMBOLS:
-        df = get_candles(sym)
+        df = get_candles(sym, resolution="15m", count=100)
+        price = get_current_price(sym)
+        current_prices[sym] = price if price is not None else 0.0
+        if df is None or len(df) < 50:
+            # insufficient data, treat as unclear for logging
+            current_regimes[sym] = "UNCLEAR"
+            ts = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d %H:%M IST")
+            with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
+                f.write(f"[{ts}] | SCAN | UNCLEAR regime | {sym}: ₹{current_prices[sym]:.2f} | No trade taken | Reason: Insufficient data\n")
+            continue
         df = calculate_indicators(df)
         regime = detect_regime(df)
-        if regime == "VOLATILE":
-            send_telegram(f"⚠️ Volatile regime for {sym}, skipping.")
+        current_regimes[sym] = regime
+        if regime == "UNCLEAR":
+            ts = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d %H:%M IST")
+            with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
+                f.write(f"[{ts}] | SCAN | UNCLEAR regime | {sym}: ₹{current_prices[sym]:.2f} | No trade taken | Reason: ADX in 20-25 zone\n")
+            # No telegram for continuous unclear scans
             continue
+        # Detect change from UNCLEAR to clear regime
+        prev = regime_state.get(sym)
+        if prev == "UNCLEAR" and regime != "UNCLEAR":
+            regime_change = True
+        # Strategy evaluation
         act = strategy_trend_following(df, regime) or strategy_mean_reversion(df, regime)
         if not act:
             continue
-        price = get_current_price(sym)
-        if price == 0:
+        if price is None:
             continue
         # dummy SL/TP
         sl = price * 0.98
@@ -134,6 +181,18 @@ def run_market_scan():
             send_telegram(f"⚠️ Risk limit: {reason}, skipping {sym}")
             continue
         record_trade(act, sym, price, sl, tp, regime, "DummyStrategy")
+    # Send consolidated telegram if any regime changed from UNCLEAR to clear
+    if regime_change:
+        time_str = now.strftime("%H:%M IST")
+        parts = []
+        for sym in SYMBOLS:
+            price = current_prices.get(sym, 0.0)
+            reg = current_regimes.get(sym, "UNCLEAR")
+            parts.append(f"{sym}: ₹{price:.2f} | Regime: {reg}")
+        msg = f"📊 Market Scan — [{time_str}] " + " ".join(parts) + " ⏳ Waiting for clear directional signal... Next scan: 15 mins"
+        send_telegram(msg)
+    # Save current regimes for next run
+    save_json("regime_state.json", current_regimes)
 
 def run_risk_monitor():
     send_telegram("🔍 Running risk monitor (stub).")

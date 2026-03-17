@@ -1,1 +1,6 @@
-[2026-03-17 09:30 IST] | No trade | Reason: Insufficient data for regime detection and strategy evaluation.
+[2026-03-17 10:30 IST] | No trade | Reason: Unable to fetch market data for BTC/ETH/SOL; insufficient data for regime detection and strategy evaluation.
+[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74278.00 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | ETHUSD: ₹2313.15 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | SOLUSD: ₹93.79 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 10:45 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹6870586.80 | ETHUSD: ₹213855.18 | SOLUSD: ₹8671.74 | No trade taken | Reason: Insufficient technical data for strategy evaluation.
+[2026-03-17 11:00 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74420.00 | ETHUSDT: $2316.70 | SOLUSDT: $94.04 | No trade taken | Reason: Insufficient data for regime detection.
