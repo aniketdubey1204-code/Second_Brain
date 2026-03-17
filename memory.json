@@ -1,9 +1,9 @@
 {
   "lastAnalysis": "2026-03-17",
-  "bestStrategy": "test_buy",
-  "bestStrategyWinRate": 1.0,
+  "bestStrategy": "N/A",
+  "bestStrategyWinRate": null,
   "falseSignalCoins": [],
-  "profitableTimeOfDay": 17,
-  "focusStrategy": "test_buy",
-  "notes": "Analysis of last 10 closed trades (up to 2026-03-15 17:09 UTC) shows 100% win rate for strategy 'test_buy'. No losing trades detected, so no false signal coins. Most profitable hour (UTC) is 17 (≈22:30 IST)."
+  "profitableTimeOfDay": null,
+  "focusStrategy": "N/A",
+  "notes": "Insufficient trade data: only one paper trade and no closed trades found in available logs. Cannot compute win rates or false signals."
 }
