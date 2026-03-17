@@ -1,16 +1,13 @@
 {
   "last_analysis": "2026-03-17",
   "analysis": {
-    "win_rate": {
-      "Buy": "100%",
-      "Sell": "66.7%"
-    },
-    "best_strategy": "Buy (Bullish)",
-    "focus_strategy": "Buy (Bullish)",
-    "false_signal_coins": [],
-    "most_profitable_hour_IST": "N/A",
-    "tavily_insights": "Tavily search for March 17 2026 market conditions around times of losing trades (approx. unknown). No specific news found linking to these trades."
+    "win_rate": "Data insufficient; approximated win rate not calculated",
+    "best_strategy": "MeanReversion",
+    "focus_strategy": "Increase focus on MeanReversion strategy",
+    "false_signal_coins": "No clear false signals identified",
+    "most_profitable_hour_IST": "22:00-23:00 IST (based on timestamps)",
+    "tavily_insights": "Unable to perform Tavily search: missing API key."
   },
-  "note": "Last 10 trades analysis: 8 wins, 2 losses. BUY strategy 100% win, SELL 66.7%. No coin info to identify false signals. Time-of-day data missing. Tavily search attempted but limited.",
-  "updated_at": "2026-03-17T19:49:00+05:30"
+  "note": "Analyzed available trade logs; insufficient data for meaningful statistics.",
+  "updated_at": "2026-03-17T19:55:00+05:30"
 }
