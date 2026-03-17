@@ -3,7 +3,7 @@
   "bestStrategy": "test_buy",
   "bestStrategyWinRate": 1.0,
   "falseSignalCoins": [],
-  "profitableTimeOfDay": 15,
+  "profitableTimeOfDay": 17,
   "focusStrategy": "test_buy",
-  "notes": "Analysis of last 10 closed trades shows 100% win rate for strategy 'test_buy'. No losing trades detected, so no false signal coins. Most profitable hour (UTC) is 15 (3 PM)."
+  "notes": "Analysis of last 10 closed trades (up to 2026-03-15 17:09 UTC) shows 100% win rate for strategy 'test_buy'. No losing trades detected, so no false signal coins. Most profitable hour (UTC) is 17 (≈22:30 IST)."
 }
