@@ -1,4 +1,17 @@
 {
-  "positions": [],
-  "last_updated": "2026-03-17 16:00 IST"
+  "positions": [
+    {
+      "id": "ETH-LONG-20260317-1931",
+      "instrument": "ETH",
+      "side": "LONG",
+      "entry_price": 2330,
+      "entry_time": "2026-03-17T19:31:14",
+      "stop_loss": 2306.70,
+      "target": 2376.60,
+      "size_inr": 100,
+      "status": "OPEN",
+      "strategy": "MeanReversion"
+    }
+  ],
+  "last_updated": "2026-03-17 19:31 IST"
 }

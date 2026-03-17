@@ -14831,3 +14831,7 @@
 {"timestamp":"2026-03-17 19:42:42","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":1354196.66,"status":"IDLE"}
 {"timestamp":"2026-03-17 19:42:43","team":"Team_C","strategy":"MeanReversion","cumulative_pnl":811773.3999999999,"status":"REVERTING"}
 {"cumulative_pnl":811773.3999999999,"status":"ACTIVE","timestamp":"2026-03-17 19:42:53","team":"Team_C","strategy":"MeanReversion"}
+{"cumulative_pnl":1354196.66,"status":"ACTIVE","timestamp":"2026-03-17 19:42:58","team":"Team_C","strategy":"MeanReversion"}
+{"timestamp":"2026-03-17 19:43:08","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":811773.4,"status":"REVERTING"}
+{"timestamp":"2026-03-17 19:43:12","team":"Team_C","strategy":"MeanReversion","model":"NVIDIA-NIM-Dedicated","cumulative_pnl":1354196.66,"status":"IDLE"}
+{"timestamp":"2026-03-17 19:43:18","team":"Team_C","strategy":"MeanReversion","cumulative_pnl":807642.29,"status":"IDLE"}

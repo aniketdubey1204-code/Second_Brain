@@ -5,13 +5,8 @@
   "focus_strategy": "MeanReversion",
   "test_buy_wins": 0,
   "notes": "test_buy data was corrupted dummy data, permanently ignored",
-  "best_time_of_day": "22:30-23:30 IST (evening)",
-  "worst_coins": [],
   "patterns_discovered": [],
-  "weekly_adjustments": [
-    {"date":"2026-03-17","note":"Analysis performed at 18:45 IST – Last 10 closed trades all winning under strategy 'test_buy'. Win rate 100%. Most profitable time slot ~22:30‑23:30 IST (17:00‑18:00 UTC). No false‑signal coins detected. No market‑condition news required. Increased focus on 'test_buy' strategy."}
-  ],
-  "total_trades_analyzed": 10,
-  "analysis_note": "Analysis performed on 2026-03-17 18:45 IST: 100% win rate for 'test_buy', best time of day 22:30‑23:30 IST, no false‑signal coins. Focus increased on best strategy.",
-  "last_analysis": "2026-03-17 19:03 IST"
+  "worst_coins": [],
+  "weekly_adjustments": [],
+  "total_trades_analyzed": 0
 }
