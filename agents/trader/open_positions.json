@@ -6,12 +6,24 @@
       "side": "LONG",
       "entry_price": 2330,
       "entry_time": "2026-03-17T19:31:14",
-      "stop_loss": 2308.00,
-      "target": 2376.60,
+      "stop_loss": 2308.0,
+      "target": 2376.6,
       "size_inr": 100,
       "status": "OPEN",
       "strategy": "MeanReversion"
+    },
+    {
+      "id": "BTC-LONG-20260317-152544",
+      "instrument": "BTC",
+      "side": "LONG",
+      "entry_price": 74016.5,
+      "entry_time": "2026-03-17T15:25:44.245316",
+      "stop_loss": 73276.335,
+      "target": 75496.83,
+      "size_inr": 100.0,
+      "status": "OPEN",
+      "strategy": "A"
     }
   ],
-  "last_updated": "2026-03-17 19:31 IST"
+  "last_updated": "2026-03-17 15:25 IST"
 }

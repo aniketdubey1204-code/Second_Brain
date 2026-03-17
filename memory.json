@@ -1,17 +1,9 @@
 {
-  "last_analysis": "2026-03-17",
-  "analysis": {
-    "win_rate": "N/A",
-    "best_strategy": "N/A",
-    "focus_strategy": "No adjustment made due to insufficient data",
-    "self_adjusted": false,
-    "false_signal_coins": "N/A",
-    "most_profitable_hour_UTC": "N/A",
-    "most_profitable_hour_IST": "N/A",
-    "tavily_insights": {
-      "note": "Insufficient trade data to perform market condition analysis."
-    }
-  },
-  "note": "trades.log contains no closed trade entries. Unable to compute win rates, strategy performance, false signal coins, or profitable trade times.",
-  "updated_at": "2026-03-17T20:50:00+05:30"
+  "lastAnalysis": "2026-03-17",
+  "bestStrategy": "test_buy",
+  "bestStrategyWinRate": 1.0,
+  "falseSignalCoins": [],
+  "profitableTimeOfDay": 15,
+  "focusStrategy": "test_buy",
+  "notes": "Analysis of last 10 closed trades shows 100% win rate for strategy 'test_buy'. No losing trades detected, so no false signal coins. Most profitable hour (UTC) is 15 (3 PM)."
 }

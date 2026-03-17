@@ -12,5 +12,12 @@
     "amount":0.01,
     "entry_price":74282,
     "timestamp":"2026-03-17T20:25:00+05:30"
+  },
+  {
+    "asset":"BTC",
+    "side":"buy",
+    "amount":0.001,
+    "entry_price":74105,
+    "timestamp":"2026-03-17T15:30:20Z"
   }
 ]
