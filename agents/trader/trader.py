@@ -1,6 +1,6 @@
 # trader.py – Simplified paper‑trading bot (Delta Exchange India)
 # ---------------------------------------------------------------
-import os, json, datetime, requests, pandas as pd, pandas_ta as ta
+import os, json, datetime, requests, pandas as pd
 
 # -------------------------- CONFIG --------------------------
 TELEGRAM_BOT_TOKEN = "8656726405:AAEYlyTqGGhZrT0-7CinkYyMtAlLqwCC8tA"

@@ -1,12 +1,24 @@
 {
   "created": "2026-03-16",
-  "version": 2,
+  "version": 3,
   "best_strategy": null,
   "best_time_of_day": null,
   "worst_coins": [],
   "patterns_discovered": [],
-  "weekly_adjustments": [],
+  "weekly_adjustments": [
+    {"date":"2026-03-17","note":"No adjustment made due to lack of closed trade data."},
+    {"date":"2026-03-17","note":"Analysis performed - no closed trades found; no changes to strategy focus."},
+    {"date":"2026-03-17","note":"Reviewed trades.log; insufficient data for analysis. No strategy focus change."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:09 IST – no closed trades found; no strategy adjustments made."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:12 IST – no closed trades found; cannot determine best strategy, false signal coins, or most profitable time of day. No changes made."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:15 IST – no closed trades found; no strategy focus change."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:18 IST – no closed trades found; cannot determine best strategy, false signal coins, or most profitable time of day. No changes made."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:21 IST – no closed trades found; unable to determine best strategy, false signal coins, or most profitable time of day. No changes made."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:24 IST – no closed trades found; unable to compute strategy win rates, false signal coins, or profitable time slots. No adjustments made."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:27 IST – no closed trades found; no strategy focus change."},
+    {"date":"2026-03-17","note":"Analysis performed at 09:30 IST – no closed trades found; cannot determine best strategy, false signal coins, or most profitable time of day. No strategy focus change."}
+  ],
   "total_trades_analyzed": 0,
-  "analysis_note": "No closed trades found in the last 10 entries of trades.log; unable to determine best strategy, false signal coins, or most profitable time of day. Checked on 2026-03-17 07:27 IST.",
-  "last_analysis": "2026-03-17 07:27 IST"
+  "analysis_note": "Analysis performed on 2026-03-17 09:30 IST: No closed trades found in the last 10 entries of trades.log; unable to determine best strategy, false signal coins, or most profitable time of day.",
+  "last_analysis": "2026-03-17 09:30 IST"
 }
