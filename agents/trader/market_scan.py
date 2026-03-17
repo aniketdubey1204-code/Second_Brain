@@ -151,11 +151,11 @@ def main():
             candles = fetch_candles(sym, limit=200)
         except Exception as e:
             print(f'Error fetching candles for {sym}: {e}', file=sys.stderr)
-            continue
+            candles = []
         if len(candles) < 50:
             # Not enough data, try fallback to coingecko price
             try:
-                cg_map = {'BTCUSDT': 'bitcoin', 'ETHUSDT': 'ethereum', 'SOLUSDT': 'solana'}
+                cg_map = {'BTCUSD':'bitcoin','ETHUSD':'ethereum','SOLUSD':'solana','BTCUSDT':'bitcoin','ETHUSDT':'ethereum','SOLUSDT':'solana'}
                 cg_id = cg_map.get(sym)
                 if cg_id:
                     resp = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={cg_id}&vs_currencies=usd")
@@ -186,7 +186,39 @@ def main():
         adx_val = adx(highs, lows, closes)
         bb = bollinger_bands(closes)
         # latest values
+        # Determine price and log endpoint used
         price = closes[-1]
+        endpoint = "Delta Exchange (candles)"
+        # SOL price sanity check – if price seems off (< $10) use CoinGecko fallback
+        if sym == 'SOLUSD' and price < 10:
+            # Fallback to CoinGecko
+            try:
+                cg_map = {'SOLUSD': 'solana'}
+                cg_id = cg_map.get(sym)
+                resp = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={cg_id}&vs_currencies=usd", timeout=10)
+                resp.raise_for_status()
+                data = resp.json()
+                price = data.get(cg_id, {}).get('usd')
+                endpoint = "CoinGecko"
+                # Log fallback usage
+                print(f'Fallback to CoinGecko for {sym}, price={price}', file=sys.stderr)
+            except Exception as e:
+                print(f'Error fetching fallback price for {sym}: {e}', file=sys.stderr)
+        # SOL price sanity check – if price seems off (< $10) use CoinGecko fallback
+        if sym == 'SOLUSD' and price < 10:
+            # Fallback to CoinGecko
+            try:
+                cg_map = {'SOLUSD': 'solana'}
+                cg_id = cg_map.get(sym)
+                resp = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={cg_id}&vs_currencies=usd", timeout=10)
+                resp.raise_for_status()
+                data = resp.json()
+                price = data.get(cg_id, {}).get('usd')
+                # Log fallback usage
+                print(f'Fallback to CoinGecko for {sym}, price={price}', file=sys.stderr)
+            except Exception as e:
+                print(f'Error fetching fallback price for {sym}: {e}', file=sys.stderr)
+
         ema20_cur = ema20[-1]
         ema50_cur = ema50[-1]
         rsi_cur = rsi_vals[-1]
@@ -200,6 +232,8 @@ def main():
         vol_avg = sum(volumes[-10:]) / 10 if len(volumes) >= 10 else volumes[-1]
         vol_spike = volumes[-1] / vol_avg if vol_avg else 1
         regime = 'A' if adx_val > 25 else ('B' if adx_val < 20 else 'B')
+        # Log which endpoint was used for this symbol
+        print(f'Price fetch for {sym}: {price} via {endpoint}', file=sys.stderr)
         # Strategy A conditions (trend)
         if regime == 'A':
             # BUY signal
