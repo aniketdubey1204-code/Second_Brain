@@ -1,13 +1,1 @@
-[2026-03-17 20:30:00] Market Scan Power:
-Fetched prices (Delta Exchange):
-- SOL_USDT spot price: 94.275
-- BTC_USDT price: not available via API
-- ETH_USDT price: not available via API
-Tavily news summary:
-1. SOL stays below $80 amid mixed market sentiment (bearish for SOL).
-2. Whale behavior indicates bearish signal for BTC, ETH, SOL (large sell-offs).
-3. Crypto news sentiment 24h: mixed, with some bullish for SOL.
-4. Solana price registers 14% rally, bullish for SOL.
-5. Mysterious whales accumulating BTC and ETH (potential accumulation).
-Market regime assessment: mixed signals, high volatility, whale activity suggests caution.
-Decision: No paper trade executed due to incomplete price data and mixed regime.
+2026-03-17 20:35:00 - Market scan performed. BTC price ~74670, ETH price ~2351. SOL price not available. News indicates mixed whale activity. No clear aggressive trade setup identified under risk guidelines. No trade executed.
