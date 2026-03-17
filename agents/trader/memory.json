@@ -1,7 +1,8 @@
 {
   "created": "2026-03-16",
   "version": 8,
-  "best_strategy": "test_buy",
+  "best_strategy": "MeanReversion",
+  "focus_strategy": "MeanReversion",
   "best_time_of_day": "22:30-23:30 IST (evening)",
   "worst_coins": [],
   "patterns_discovered": [],
