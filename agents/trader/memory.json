@@ -7,5 +7,6 @@
   "patterns_discovered": [],
   "weekly_adjustments": [],
   "total_trades_analyzed": 0,
-  "analysis_note": "As of 2026-03-16 23:57 IST, no closed trades found in trades.log for analysis. Unable to determine best strategy, false signal coins, or profitable time of day."
+  "analysis_note": "No closed trades found in the last 10 entries of trades.log; unable to determine best strategy, false signal coins, or most profitable time of day. Checked on 2026-03-17 07:27 IST.",
+  "last_analysis": "2026-03-17 07:27 IST"
 }

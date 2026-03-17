@@ -1,3 +1,3 @@
-# Trades log – created
-[2026-03-16 23:45 IST] | SCAN | Regime A (Trending) | No trade entry signals.
-[2026-03-16 23:52 IST] | SCAN | Regime undetermined | No trade executed (insufficient data for indicators).
+[2026-03-17 06:45 IST] | SCAN | Regime undetermined | No trade executed (insufficient indicator data).
+[2026-03-17 07:00 IST] | SCAN | Regime undetermined | No trade executed (failed to fetch market data).
+[2026-03-17 07:15 IST] | SCAN | Regime undetermined | Prices fetched: BTC=unavailable, ETH=unavailable, SOL=95.56; insufficient data for indicators; no trade executed.
