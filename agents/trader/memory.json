@@ -6,27 +6,11 @@
   "worst_coins": ["BTC"],
   "patterns_discovered": [],
   "weekly_adjustments": [
-    {"date": "2026-03-17", "note": "Analysis performed at 11:36 IST - only one closed trade (loss on BTC) - cannot compute win rates. BTC flagged as potential false-signal coin. No profitable time identified. No strategy focus change possible."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:39 IST - reviewed last 10 closed trades (only 1 available). No clear best strategy, BTC remains false-signal coin, no profitable time of day. No adjustments made."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:42 IST - only one closed trade (loss on BTC). Cannot compute win rates. BTC flagged as false-signal coin. No profitable time of day identified. No focus adjustment applied."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:45 IST - last 10 closed trades inspected (only 1 available). No winning strategy identified; BTC appears to give false signals. No time of day shows profit. No focus adjustment applied."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:48 IST - insufficient closed trade data (only 1 trade, loss on BTC). Cannot determine best strategy win rate, false-signal coins remain BTC, no profitable time of day. No strategy focus change possible."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:51 IST - only one closed trade (loss on BTC). No winning strategy identified, BTC flagged as false-signal coin, no profitable time of day. No focus adjustment applied."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:56 IST - insufficient data: only one closed trade (loss on BTC). Cannot compute win rates. BTC remains false-signal coin. No profitable time identified. No strategy focus change possible."},
-    {"date": "2026-03-17", "note": "Analysis performed at 11:57 IST - insufficient closed trade data (only one closed trade, a loss on BTC). Cannot compute win rates or identify profitable time of day. BTC remains false-signal coin. No focus adjustment applied."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:00 IST - only one closed trade (none) - cannot compute win rates. No best strategy, no false-signal changes, no profitable time of day. No adjustments made."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:03 IST - no closed trades in last 10 entries. Cannot compute win rates. No best strategy identified. No false-signal coin updates, no profitable time of day. No adjustments made to strategy focus."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:06 IST - No closed trades in last 10 entries. Cannot compute win rates. No best strategy identified, BTC remains false-signal coin. No profitable time of day. No adjustments made."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:09 IST - No closed trades found in the last 10 entries of trades.log. Unable to compute win rates per strategy, identify false-signal coins, or determine most profitable time of day. No adjustments made to strategy focus."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:12 IST - No closed trades in last 10 entries. Cannot compute win rates. No best strategy identified, no false-signal coin updates, no profitable time of day detected."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:15 IST - No closed trades in the last 10 entries. Cannot compute win rates. No best strategy identified, no false-signal coin updates, no profitable time of day detected."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:20 IST - No closed trades in the last 10 entries of trades.log. Unable to compute win rates per strategy, identify false-signal coins, or determine most profitable time of day. No adjustments made to strategy focus."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:21 IST - No closed trades in the last 10 entries of trades.log. Cannot compute win rates, best strategy, false-signal coins, or profitable time of day. No strategy focus adjustment made."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:24 IST - No closed trades in the last 10 entries. Unable to compute win rates for strategies, identify false-signal coins, or determine most profitable time of day. No adjustments to strategy focus applied."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:27 IST - No closed trades in the last 10 entries of trades.log. Cannot compute strategy win rates, false-signal coins, or profitable time of day. No focus adjustment made."},
-    {"date": "2026-03-17", "note": "Analysis performed at 12:30 IST - No closed trades found in the last 10 entries of trades.log. Unable to compute win rates per strategy, identify false-signal coins, or determine most profitable time of day. No adjustments made to strategy focus."}
+    {"date": "2026-03-17", "note": "Analysis performed at 13:30 IST - No closed trades in last 10 entries. Cannot compute win rates, best strategy, false‑signal coins, or profitable time of day. No strategy focus adjustment applied."},
+    {"date": "2026-03-17", "note": "Analysis performed at 13:33 IST - No closed trades in last 10 entries. Unable to determine best strategy, false‑signal coins, or optimal time of day. No focus adjustment applied."},
+    {"date": "2026-03-17", "note": "Analysis performed at 13:36 IST - No closed trades in last 10 entries. Unable to compute win rates or identify best strategy, false‑signal coins, or profitable time of day. No focus adjustment applied."}
   ],
   "total_trades_analyzed": 1,
-  "analysis_note": "Analysis performed on 2026-03-17 12:30 IST: No closed trades in last 10 entries. Cannot compute win rates. No best strategy identified, no false-signal coin updates, no profitable time of day detected.",
-  "last_analysis": "2026-03-17 12:30 IST"
+  "analysis_note": "Analysis performed on 2026-03-17 13:36 IST: No closed trades in last 10 entries. Cannot compute win rates. No best strategy identified, no false‑signal coin updates, or optimal time of day detected. No focus adjustment applied.",
+  "last_analysis": "2026-03-17 13:36 IST"
 }

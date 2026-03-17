@@ -174,7 +174,7 @@ def run_market_scan():
     current_regimes = {}
     regime_change = False
     for sym in SYMBOLS:
-        df = get_candles(sym, resolution="15m", count=100)
+        df = get_candles(sym, resolution="15m", count=200)
         price = get_current_price(sym)
         current_prices[sym] = price if price is not None else 0.0
         if df is None or len(df) < 50:
@@ -185,6 +185,45 @@ def run_market_scan():
                 f.write(f"[{ts}] | SCAN | UNCLEAR regime | {sym}: ₹{current_prices[sym]:.2f} | No trade taken | Reason: Insufficient data\n")
             continue
         df = calculate_indicators(df)
+        # Initialize regime placeholder for possible London breakout
+        regime = None
+        # --- London session breakout check (12:30‑14:30 IST) ---
+        now_ist = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30)))
+        if (now_ist.hour == 12 and now_ist.minute >= 30) or (now_ist.hour > 12 and now_ist.hour < 14) or (now_ist.hour == 14 and now_ist.minute <= 30):
+            # Determine Asia session range (6:00‑12:00 IST)
+            asia_start = now_ist.replace(hour=6, minute=0, second=0, microsecond=0)
+            asia_end = now_ist.replace(hour=12, minute=0, second=0, microsecond=0)
+            asia_df = df[(df["time"] >= asia_start) & (df["time"] <= asia_end)]
+            if not asia_df.empty:
+                asia_high = asia_df["high"].max()
+                asia_low = asia_df["low"].min()
+                latest_volume = df["volume"].iloc[-1]
+                avg_volume = df["volume"].mean()
+                if price > asia_high and latest_volume > avg_volume:
+                    regime = "LONDON_BREAKOUT"
+                    act = "BUY"
+                elif price < asia_low and latest_volume > avg_volume:
+                    regime = "LONDON_BREAKOUT"
+                    act = "SHORT"
+                else:
+                    act = None
+                if regime == "LONDON_BREAKOUT":
+                    current_regimes[sym] = regime
+                    # Log breakout regime
+                    ts = now_ist.strftime("%Y-%m-%d %H:%M IST")
+                    with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
+                        f.write(f"[{ts}] | SCAN | {regime} regime | {sym}: ₹{price:.2f} | Breakout signal: {act}\n")
+                # If breakout detected, skip normal regime logic and continue to trade handling below
+                if act:
+                    # Continue to trade execution using breakout signal
+                    # Use same SL/TP logic as normal but with breakout regime
+                    sl = price * 0.983  # -1.7%
+                    tp = price * 1.043  # +4.3%
+                    ok, reason = check_risk_limits(positions, bal, daily_pnl)
+                    if ok:
+                        record_trade(act, sym, price, sl, tp, regime, "LondonBreakout", slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0)
+                    continue
+        # Normal regime detection
         regime = detect_regime(df)
         current_regimes[sym] = regime
         if regime == "UNCLEAR":

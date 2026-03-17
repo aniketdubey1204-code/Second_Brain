@@ -1,13 +1,16 @@
 {
   "positions": [
     {
-      "coin": "BTC/USDT",
-      "entry_price_usd": 74134.6,
-      "quantity": 0.000082,
-      "strategy": "A",
-      "regime": "A",
-      "entry_time": "2026-03-17 12:30 IST"
+      "symbol": "ETHUSDT",
+      "entry_price": 2329.28,
+      "quantity": 0.2,
+      "stop_loss": 2305.99,
+      "take_profit": 2422.45,
+      "strategy": "Strategy A",
+      "regime": "Regime A",
+      "opened_at": "2026-03-17 13:15 IST"
     }
   ],
-  "last_updated": "2026-03-17 12:30 IST"
+  "last_updated": "2026-03-17 13:15 IST",
+  "last_checked": "2026-03-17 13:30 IST"
 }
