@@ -1,17 +1,17 @@
 {
   "last_analysis": "2026-03-17",
   "analysis": {
-    "win_rate": "100% (10/10 trades closed profitably)",
-    "best_strategy": "test_buy",
-    "focus_strategy": "Increase focus on test_buy strategy",
-    "self_adjusted": true,
-    "false_signal_coins": "None",
-    "most_profitable_hour_UTC": "17 (5 PM UTC)",
-    "most_profitable_hour_IST": "22:30-23:30 (10:30‑11:30 PM IST)",
+    "win_rate": "N/A",
+    "best_strategy": "N/A",
+    "focus_strategy": "No adjustment made due to insufficient data",
+    "self_adjusted": false,
+    "false_signal_coins": "N/A",
+    "most_profitable_hour_UTC": "N/A",
+    "most_profitable_hour_IST": "N/A",
     "tavily_insights": {
-      "note": "No losing trades in the recent window, so no specific market news correlated with losses."
+      "note": "Insufficient trade data to perform market condition analysis."
     }
   },
-  "note": "Analysis of the last 10 closed trades shows 100% win rate for test_buy strategy. No false‑signal coins detected. Most profitable hour is 5 PM UTC (10:30‑11:30 PM IST).",
-  "updated_at": "2026-03-17T20:36:00+05:30"
+  "note": "trades.log contains no closed trade entries. Unable to compute win rates, strategy performance, false signal coins, or profitable trade times.",
+  "updated_at": "2026-03-17T20:50:00+05:30"
 }
