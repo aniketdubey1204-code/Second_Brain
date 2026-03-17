@@ -1,2 +1,13 @@
-{"timestamp":"2026-03-17T20:15:00+05:30","prices":{"BTCUSDT":74370.36,"ETHUSDT":2347.12,"SOLUSDT":94.59},"regimes":{"BTCUSDT":"sideways","ETHUSDT":"sideways","SOLUSDT":"sideways"},"signal":null}
-{"timestamp":"2026-03-17T20:20:00+05:30","prices":{"BTCUSDT":74149.09,"ETHUSDT":2339.44,"SOLUSDT":94.24},"regimes":{"BTCUSDT":"aggressive","ETHUSDT":"aggressive","SOLUSDT":"aggressive"},"signal":"BTC whale accumulation suggests bullish, entering long BTCUSDT position"}
+[2026-03-17 20:30:00] Market Scan Power:
+Fetched prices (Delta Exchange):
+- SOL_USDT spot price: 94.275
+- BTC_USDT price: not available via API
+- ETH_USDT price: not available via API
+Tavily news summary:
+1. SOL stays below $80 amid mixed market sentiment (bearish for SOL).
+2. Whale behavior indicates bearish signal for BTC, ETH, SOL (large sell-offs).
+3. Crypto news sentiment 24h: mixed, with some bullish for SOL.
+4. Solana price registers 14% rally, bullish for SOL.
+5. Mysterious whales accumulating BTC and ETH (potential accumulation).
+Market regime assessment: mixed signals, high volatility, whale activity suggests caution.
+Decision: No paper trade executed due to incomplete price data and mixed regime.

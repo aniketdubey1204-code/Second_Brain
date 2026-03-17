@@ -1,12 +1,12 @@
 {
   "created": "2026-03-16",
   "version": 8,
-  "best_strategy": "MeanReversion",
-  "focus_strategy": "MeanReversion",
-  "test_buy_wins": 0,
+  "best_strategy": "test_buy",
+  "focus_strategy": "test_buy",
+  "test_buy_wins": 10,
   "notes": "test_buy data was corrupted dummy data, permanently ignored",
   "patterns_discovered": [],
   "worst_coins": [],
   "weekly_adjustments": [],
-  "total_trades_analyzed": 0
+  "total_trades_analyzed": 10
 }

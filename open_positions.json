@@ -5,5 +5,12 @@
     "amount":0.01,
     "entry_price":74149.09,
     "timestamp":"2026-03-17T20:20:00+05:30"
+  },
+  {
+    "asset":"BTCUSDT",
+    "side":"sell",
+    "amount":0.01,
+    "entry_price":74282,
+    "timestamp":"2026-03-17T20:25:00+05:30"
   }
 ]
