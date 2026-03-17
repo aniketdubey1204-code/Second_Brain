@@ -1,8 +1,0 @@
-{
-  "initial_capital": 10000,
-  "current_balance": 10000,
-  "currency": "INR",
-  "mode": "PAPER",
-  "last_updated": "2026-03-17 16:45 IST",
-  "note": "Reset due to balance calculation bug fix"
-}
