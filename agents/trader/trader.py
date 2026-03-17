@@ -35,7 +35,7 @@ def save_json(fname, data):
     with open(p, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
 
-def get_candles(symbol, resolution="15m", count=100):
+def get_candles(symbol, resolution="15m", count=200):
     import time
     from datetime import datetime, timedelta
     base_url = "https://api.india.delta.exchange"
@@ -67,6 +67,10 @@ def get_candles(symbol, resolution="15m", count=100):
         df[["open","high","low","close","volume"]] = df[["open","high","low","close","volume"]].astype(float)
         df["time"] = pd.to_datetime(df["time"], unit="s")
         df["time"] = df["time"].dt.tz_localize("UTC").dt.tz_convert("Asia/Kolkata")
+        # Validation: need at least 60 candles
+        if len(df) < 60:
+            send_telegram(f"⚠️ {symbol}: Only {len(df)} candles received — need minimum 60. Skipping.")
+            return None
         return df
     except Exception as e:
         send_telegram(f"❌ Error fetching candles for {symbol}: {str(e)}")
@@ -112,20 +116,46 @@ def check_risk_limits(positions, balance, daily_pnl):
         return False, "Daily loss limit hit"
     return True, "OK"
 
-def record_trade(action, symbol, entry, sl, tp, regime, strategy):
+import uuid
+
+def record_trade(action, symbol, entry, sl, tp, regime, strategy, slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0):
+    # action is direction e.g., "BUY" or "SELL"
     ts = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d %H:%M:%S IST")
-    line = f"[{ts}] | {symbol} | {strategy} | {regime} | {action} | Entry:{entry:.2f} SL:{sl:.2f} TP:{tp:.2f}\n"
+    # Log with detailed fields for open trade
+    line = (f"[{ts}] | {symbol} | {strategy} | {regime} | {action} | Entry:{entry:.2f} "
+            f"SL:{sl:.2f} TP:{tp:.2f} Slippage:{slippage_cost:.2f} Fee:{fee:.2f} "
+            f"GrossP&L:{gross_pnl:.2f} NetP&L:{net_pnl:.2f}\n")
     with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
         f.write(line)
-    # update balance & positions (very simple mock)
+    # Update open positions list with needed fields
     bal = load_json("paper_balance.json")
     if not bal:
         bal = {"initial_capital":10000,"current_balance":10000,"currency":"INR","mode":"PAPER"}
-    pos = load_json("open_positions.json").get("positions", [])
-    size = calculate_position_size(bal["current_balance"], entry, sl)
-    pos.append({"symbol":symbol,"action":action,"entry":entry,"sl":sl,"tp":tp,"size":size})
-    save_json("open_positions.json", {"positions":pos})
-    bal["current_balance"] = bal["current_balance"]  # unchanged in paper mode
+    pos_data = load_json("open_positions.json")
+    if not pos_data:
+        pos_data = {"positions": []}
+    positions = pos_data.get("positions", [])
+    # Calculate quantity (size) – using same logic as before
+    quantity = calculate_position_size(bal["current_balance"], entry, sl)
+    # Generate unique id for the position
+    pos_id = str(uuid.uuid4())
+    positions.append({
+        "id": pos_id,
+        "symbol": symbol,
+        "direction": action,
+        "actual_entry": entry,
+        "stop_loss": sl,
+        "take_profit": tp,
+        "quantity": quantity,
+        "strategy": strategy,
+        "regime": regime,
+        "slippage_cost": slippage_cost,
+        "fee": fee,
+        "gross_pnl": gross_pnl,
+        "net_pnl": net_pnl
+    })
+    save_json("open_positions.json", {"positions": positions})
+    # paper balance unchanged on opening
     save_json("paper_balance.json", bal)
     send_telegram(f"🟢 [PAPER] {symbol} {action} opened at {entry:.2f}")
 
@@ -173,14 +203,22 @@ def run_market_scan():
             continue
         if price is None:
             continue
-        # dummy SL/TP
-        sl = price * 0.98
-        tp = price * 1.04
+        # Adjusted SL/TP and slippage buffer
+        # SL -1.7%, TP +4.3%
+        sl = price * 0.983
+        tp = price * 1.043
+        # Determine slippage based on order side
+        if isinstance(act, str) and act.upper().startswith("BUY"):
+            actual_entry = price * 1.0005  # BUY buffer
+        else:
+            actual_entry = price * 0.9995  # SELL/SHORT buffer
+        slippage_cost = abs(actual_entry - price)
         ok, reason = check_risk_limits(positions, bal, daily_pnl)
         if not ok:
             send_telegram(f"⚠️ Risk limit: {reason}, skipping {sym}")
             continue
-        record_trade(act, sym, price, sl, tp, regime, "DummyStrategy")
+        # fee and P&L will be calculated on close; placeholders for now
+        record_trade(act, sym, actual_entry, sl, tp, regime, "DummyStrategy", slippage_cost=slippage_cost, fee=0.0, gross_pnl=0.0, net_pnl=0.0)
     # Send consolidated telegram if any regime changed from UNCLEAR to clear
     if regime_change:
         time_str = now.strftime("%H:%M IST")
@@ -194,8 +232,91 @@ def run_market_scan():
     # Save current regimes for next run
     save_json("regime_state.json", current_regimes)
 
+def close_trade(position, exit_price, reason):
+    # Compute actual exit with slippage buffer
+    direction = position["direction"]  # BUY or SELL/SHORT
+    entry_price = float(position["actual_entry"])
+    quantity = float(position["quantity"])
+    # Slippage on exit
+    if direction.upper() == "BUY":
+        actual_exit = exit_price * 0.9995  # sell slightly lower
+    else:
+        actual_exit = exit_price * 1.0005  # cover slightly higher
+    # Gross P&L
+    if direction.upper() == "BUY":
+        gross_pnl = (actual_exit - entry_price) * quantity
+    else:
+        gross_pnl = (entry_price - actual_exit) * quantity
+    # Fees (entry + exit)
+    trade_value = entry_price * quantity
+    entry_fee = trade_value * 0.0005
+    exit_fee = (actual_exit * quantity) * 0.0005
+    total_fee = entry_fee + exit_fee
+    # Net P&L
+    net_pnl = gross_pnl - total_fee
+    # Update balance
+    balance = load_json("paper_balance.json")
+    balance["current_balance"] = balance.get("current_balance", 0) + (trade_value + net_pnl)
+    balance["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M IST")
+    save_json("paper_balance.json", balance)
+    # Log closed trade
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M IST")
+    slippage_total = position.get("slippage_cost", 0.0) + abs(exit_price - actual_exit) * quantity
+    log_line = (f"[CLOSED] [{ts}] | {position['symbol']} | {position['strategy']} | {position['regime']} | "
+                f"Entry: ₹{entry_price:.2f} | Exit: ₹{actual_exit:.2f} | "
+                f"Slippage: ₹{slippage_total:.2f} | Fee: ₹{total_fee:.2f} | "
+                f"Gross P&L: ₹{gross_pnl:.2f} | Net P&L: ₹{net_pnl:.2f} ({(net_pnl/trade_value)*100:.2f}%) | "
+                f"Reason: {reason}")
+    with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
+        f.write(log_line + "\n")
+    # Remove from open positions
+    pos_data = load_json("open_positions.json")
+    if pos_data:
+        positions = pos_data.get("positions", [])
+        positions = [p for p in positions if p.get("id") != position.get("id")]
+        pos_data["positions"] = positions
+        pos_data["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M IST")
+        save_json("open_positions.json", pos_data)
+    # Telegram alert
+    emoji = "🟢" if net_pnl > 0 else "🔴"
+    send_telegram(
+        f"{emoji} [PAPER] TRADE CLOSED\n"
+        f"Coin: {position['symbol']}\n"
+        f"Direction: {direction}\n"
+        f"Entry: ₹{entry_price:.2f} → Exit: ₹{actual_exit:.2f}\n"
+        f"Gross P&L: ₹{gross_pnl:.2f}\n"
+        f"Fees: ₹{total_fee:.2f}\n"
+        f"Net P&L: ₹{net_pnl:.2f} ({(net_pnl/trade_value)*100:.2f}%)\n"
+        f"Reason: {reason}\n"
+        f"Balance: ₹{balance['current_balance']:.2f}"
+    )
+    return net_pnl
+
 def run_risk_monitor():
-    send_telegram("🔍 Running risk monitor (stub).")
+    # Iterate open positions and close if SL/TP hit
+    positions_data = load_json("open_positions.json")
+    if not positions_data:
+        send_telegram("🔍 No open positions to monitor.")
+        return
+    positions = positions_data.get("positions", [])
+    for position in positions[:]:  # copy to allow removal
+        current_price = get_current_price(position["symbol"])
+        if current_price is None:
+            continue
+        direction = position["direction"].upper()
+        stop_loss = float(position["stop_loss"])
+        take_profit = float(position["take_profit"])
+        if direction == "BUY":
+            if current_price <= stop_loss:
+                close_trade(position, current_price, "Stop Loss Hit")
+            elif current_price >= take_profit:
+                close_trade(position, current_price, "Take Profit Hit")
+        else:  # SHORT or SELL
+            if current_price >= stop_loss:
+                close_trade(position, current_price, "Stop Loss Hit")
+            elif current_price <= take_profit:
+                close_trade(position, current_price, "Take Profit Hit")
+    send_telegram("🔍 Risk monitor completed.")
 
 def run_learning_review():
     send_telegram("📚 Running learning review (stub).")

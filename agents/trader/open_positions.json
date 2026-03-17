@@ -1,1 +1,13 @@
-{ "positions": [], "last_updated": "2026-03-17" }
+{
+  "positions": [
+    {
+      "coin": "BTC/USDT",
+      "entry_price_usd": 74134.6,
+      "quantity": 0.000082,
+      "strategy": "A",
+      "regime": "A",
+      "entry_time": "2026-03-17 12:30 IST"
+    }
+  ],
+  "last_updated": "2026-03-17 12:30 IST"
+}

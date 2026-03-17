@@ -1,6 +1,5 @@
-[2026-03-17 10:30 IST] | No trade | Reason: Unable to fetch market data for BTC/ETH/SOL; insufficient data for regime detection and strategy evaluation.
-[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74278.00 | No trade taken | Reason: ADX in 20-25 zone
-[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | ETHUSD: ₹2313.15 | No trade taken | Reason: ADX in 20-25 zone
-[2026-03-17 10:38 IST] | SCAN | UNCLEAR regime | SOLUSD: ₹93.79 | No trade taken | Reason: ADX in 20-25 zone
-[2026-03-17 10:45 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹6870586.80 | ETHUSD: ₹213855.18 | SOLUSD: ₹8671.74 | No trade taken | Reason: Insufficient technical data for strategy evaluation.
-[2026-03-17 11:00 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74420.00 | ETHUSDT: $2316.70 | SOLUSDT: $94.04 | No trade taken | Reason: Insufficient data for regime detection.
+[2026-03-17 11:45 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74053.49 | ETHUSDT: $2308.16 | SOLUSDT: $93.80 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger, volume).
+[2026-03-17 12:00 IST] | SCAN | VOLATILE regime | BTCUSDT: $74200.2 | ETHUSDT: $2319.48 | SOLUSDT: $94.11 | No trade taken | Reason: Volatility > 5% triggers Regime C, pausing entries.[2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74246.00 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | ETHUSD: ₹2320.95 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | SOLUSD: ₹94.16 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 12:15 IST] | SCAN | UNCLEAR regime | BTCUSDT: $74246.00 | ETHUSDT: $2321.00 | SOLUSDT: $94.20 | No trade taken | Reason: ADX in 20-25 zone, volatility moderate, no clear signal.[2026-03-17 12:30 IST] | BTC/USDT | Strategy A | Regime A | Entry: .6 | Qty: 0.000082 | Reason In: MACD bullish crossover, RSI 50, price above 20EMA & 50EMA, volume +20% avg
