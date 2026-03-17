@@ -12,6 +12,10 @@
     {
       "date": "2026-03-17",
       "note": "Increased focus on best strategy test_buy after analysis of last 10 trades; 100% win rate, best hour 17 (5pm)."
+    },
+    {
+      "date": "2026-03-17",
+      "note": "No trades executed in latest scan; unable to compute win rates or adjust strategy."
     }
   ],
   "total_trades_analyzed": 21,
