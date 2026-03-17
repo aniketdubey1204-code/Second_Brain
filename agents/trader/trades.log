@@ -1,13 +1,15 @@
 [2026-03-17 11:45 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74053.49 | ETHUSDT: $2308.16 | SOLUSDT: $93.80 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger, volume).
-[2026-03-17 12:00 IST] | SCAN | VOLATILE regime | BTCUSDT: $74200.2 | ETHUSDT: $2319.48 | SOLUSDT: $94.11 | No trade taken | Reason: Volatility > 5% triggers Regime C, pausing entries.[2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74246.00 | No trade taken | Reason: ADX in 20-25 zone
+[2026-03-17 12:00 IST] | SCAN | VOLATILE regime | BTCUSDT: $74200.2 | ETHUSDT: $2319.48 | SOLUSDT: $94.11 | No trade taken | Reason: Volatility > 5% triggers Regime C, pausing entries.
+[2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74246.00 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | ETHUSD: ₹2320.95 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 12:09 IST] | SCAN | UNCLEAR regime | SOLUSD: ₹94.16 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 12:15 IST] | SCAN | UNCLEAR regime | BTCUSDT: $74246.00 | ETHUSDT: $2321.00 | SOLUSDT: $94.20 | No trade taken | Reason: ADX in 20-25 zone, volatility moderate, no clear signal.
-[2026-03-17 12:30 IST] | BTC/USDT | Strategy A | Regime A | Entry: .6 | Qty: 0.000082 | Reason In: MACD bullish crossover, RSI 50, price above 20EMA & 50EMA, volume +20% avg
+[2026-03-17 12:30 IST] | BTC/USDT | Strategy A | Regime A | Entry .6 | Qty: 0.000082 | Reason In: MACD bullish crossover, RSI 50, price above 20EMA & 50EMA, volume +20% avg
 [2026-03-17 12:40 IST] | SCAN | UNCLEAR regime | BTCUSD: ₹74159.00 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 12:40 IST] | SCAN | UNCLEAR regime | ETHUSD: ₹2318.90 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 12:40 IST] | SCAN | UNCLEAR regime | SOLUSD: ₹94.07 | No trade taken | Reason: ADX in 20-25 zone
 [2026-03-17 13:00 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74407 | ETHUSDT: $2335.89 | SOLUSDT: $94.52 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger Bands, volume).
 [2026-03-17 13:15 IST] | ETHUSDT | Strategy A | Regime A | Entry: 2329.28 | Qty: 0.2 | SL: 2305.99 | TP: 2422.45 | Reason In: RSI 58.6, price above EMA20/EMA50, volume normal, MACD assumed bullish | Reason Out: pending
 [2026-03-17 13:30 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74369.59 | ETHUSDT: $2329.78 | SOLUSDT: $94.48 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger, volume).
-[2026-03-17 13:30 IST] | ETHUSDT | HOLD | Current: $2329.78 | Entry: 2329.28 | SL: 2305.99 | TP: 2422.45 | Reason: Price near entry, within stop loss/take profit range.
+[2026-03-17 13:45 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74218.5 | ETHUSDT: $2329.78 | SOLUSDT: $94.47 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger Bands, volume).
+[2026-03-17 14:00 IST] | SCAN | UNDETERMINED regime | BTCUSDT: $74200 | ETHUSDT: $2329 | SOLUSDT: $94.66 | No trade taken | Reason: Insufficient technical indicator data (ADX, Bollinger, volume).
