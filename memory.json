@@ -2,14 +2,15 @@
   "last_analysis": "2026-03-17",
   "analysis": {
     "win_rate": {
-      "MeanReversion": 1.0,
-      "Trend": 0.8
+      "MeanReversion": 1,
+      "Trend": 1,
+      "Scalper": 1
     },
-    "best_strategy": "MeanReversion",
+    "best_strategy": "All",
     "focus_strategy": "MeanReversion",
     "false_signal_coins": [],
-    "most_profitable_hour_IST": "18:00-19:00",
-    "tavily_insights": "No significant adverse market news found for the periods of losing trades (none identified). Overall market was stable with modest upward trend in BTC and ETH."
+    "most_profitable_hour_IST": "22:00-23:00",
+    "tavily_insights": "No losing trades in the last 10 closed trades, so no adverse market news identified. Market was stable with upward movement in BTC and ETH during the periods."
   },
-  "note": "Analysis of recent trades (last 10 closed) shows MeanReversion strategy outperforming Trend. Evening IST hours (18:00-19:00) most profitable. No false signal coins detected."
+  "note": "Analysis of recent trades (last 10 closed) shows uniform win rates across strategies. Evening IST hours (22:00-23:00) most profitable. No false signal coins detected."
 }
