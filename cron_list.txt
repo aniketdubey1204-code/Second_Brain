@@ -1,0 +1,11 @@
+ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
+35091ba4-4afe-4144-95db-464586c21b31 market-scan-normal       cron */15 6-19 * * * @ Asia/K... <1m ago    15m ago    running   isolated  trader     -
+c5c167c0-9c49-4689-bc39-5067f4220f6f learning-review          cron 0 */3 6-23 * * * @ Asia/... <1m ago    3m ago     running   isolated  trader     -
+5b7cf596-bfa6-4237-93ec-e2024a1472fa risk-monitor             cron 0 6-23 * * * @ Asia/Kolk... in 15m     45m ago    ok        isolated  trader     -
+43bc8ea6-d093-4d2e-aa6a-81a289a0d850 auto-git-sync            cron 0 */6 * * * @ Asia/Kolka... in 1h      5h ago     ok        isolated  main       -
+2cbf4d93-48cb-4217-82c3-766bdd347934 market-scan-power        cron */5 20-23 * * * @ Asia/K... in 3h      -          idle      isolated  trader     -
+6d007676-8478-4b87-b393-2d000388197e daily-report             cron 0 21 * * * @ Asia/Kolkat... in 4h      -          idle      isolated  trader     -
+1c9d85f3-4238-4319-9dc9-2fe5ee27bcf9 daily-journal-generator  cron 55 23 * * * @ Asia/Kolka... in 7h      17h ago    ok        isolated  main       kimi
+66235375-c2db-48c1-9943-d316ccb16332 night-pause              cron 0 0 * * * @ Asia/Kolkata... in 7h      -          idle      isolated  trader     -
+ef88644a-fcdd-4d40-85a2-80947d3cb03e morning-resume           cron 30 5 * * * @ Asia/Kolkat... in 13h     -          idle      isolated  trader     -
+8d1e465b-38fb-45e7-ade3-9fed6babda7f weekly-summary           cron 0 20 * * 0 @ Asia/Kolkat... in 5d      -          idle      isolated  trader     -

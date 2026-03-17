@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 # Config
 symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT']
-base_url = 'https://api.delta.exchange/v2'
+base_url = 'https://api.india.delta.exchange/v2'
 resolution = 15 * 60  # seconds for 15-min candles
 
 def get_product_id(symbol):

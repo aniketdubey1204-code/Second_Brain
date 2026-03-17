@@ -13,4 +13,5 @@ max_drawdown: 0.15  # 15% drawdown triggers shutdown
 consecutive_loss_limit: 3  # pause after 3 losses
 pause_duration_minutes: 60  # pause length on loss streak
 strategy_mode: normal  # options: normal, test
+preferred_strategy: test_buy  # increased focus based on recent analysis
 max_trades_per_hour: 2
