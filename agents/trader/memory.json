@@ -1,12 +1,13 @@
 {
-  "created": "2026-03-16",
+  "created": "2026-03-17",
   "version": 9,
-  "best_strategy": "N/A",
-  "focus_strategy": "N/A",
-  "test_buy_wins": 10,
-  "notes": "Analysis performed on 2026-03-17; insufficient closed trade data to adjust focus.",
-  "patterns_discovered": [],
+  "best_strategy": "MeanReversion",
+  "focus_strategy": "MeanReversion",
+  "test_buy_wins": 0,
+  "notes": "test_buy is BLACKLISTED dummy data. Never use or reference it.",
   "worst_coins": [],
+  "patterns_discovered": [],
   "weekly_adjustments": [],
-  "total_trades_analyzed": 1
+  "total_trades_analyzed": 0,
+  "last_analysis": "2026-03-17 21:05 IST"
 }

@@ -1,3 +1,13 @@
+## CRITICAL SYSTEM RULES — NEVER VIOLATE
+- NEVER create new Python scripts without explicit user instruction
+- NEVER create new cron jobs without explicit user instruction
+- NEVER modify your own cron schedule
+- NEVER set focus_strategy to "N/A" or any unknown value
+- NEVER overwrite memory.json with test_buy references
+- ONLY write to agents/trader/trades.log — no other log files
+- ALL prices must be in USD ($) — never use ¥ or other currency symbols
+- NEVER reset open_positions.json unless you are the night-pause job
+
 ## BLACKLISTED STRATEGIES
 - test_buy: THIS IS DUMMY TEST DATA. NEVER reference, use, or analyze this strategy. It does not exist.
 - If trades.log contains test_buy entries, IGNORE them completely in all analysis.

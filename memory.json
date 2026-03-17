@@ -1,9 +1,13 @@
 {
-  "lastAnalysis": "2026-03-17",
-  "bestStrategy": "N/A",
-  "bestStrategyWinRate": null,
-  "falseSignalCoins": [],
-  "profitableTimeOfDay": null,
-  "focusStrategy": "N/A",
-  "notes": "Insufficient trade data: only one paper trade and no closed trades found in available logs. Cannot compute win rates or false signals."
+  "created": "2026-03-17",
+  "version": 9,
+  "best_strategy": "MeanReversion",
+  "focus_strategy": "MeanReversion",
+  "test_buy_wins": 0,
+  "notes": "test_buy is BLACKLISTED dummy data. Never use or reference it.",
+  "worst_coins": [],
+  "patterns_discovered": [],
+  "weekly_adjustments": [],
+  "total_trades_analyzed": 0,
+  "last_analysis": "2026-03-17 21:05 IST"
 }
