@@ -1,1 +1,9 @@
-[{"instrument":"ETH","side":"long","price":2330,"timestamp":"2026-03-17T19:31:14.030072"}]
+[
+  {
+    "asset":"BTCUSDT",
+    "side":"buy",
+    "amount":0.01,
+    "entry_price":74149.09,
+    "timestamp":"2026-03-17T20:20:00+05:30"
+  }
+]
