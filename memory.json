@@ -2,13 +2,15 @@
   "last_analysis": "2026-03-17",
   "analysis": {
     "win_rate": {
-      "test_buy": 1
+      "MeanReversion": "high",
+      "Trend": "moderate"
     },
-    "best_strategy": "test_buy",
-    "focus_strategy": "test_buy",
+    "best_strategy": "MeanReversion",
+    "focus_strategy": "MeanReversion",
     "false_signal_coins": [],
-    "most_profitable_hour_IST": "22:00-23:00",
-    "tavily_insights": "No losing trades in the last 10 closed trades, so no adverse market news identified. Market was stable with upward movement in BTC and ETH during the periods."
+    "most_profitable_hour_IST": "19:00-20:00",
+    "tavily_insights": "Market news on March 17, 2026 indicates a significant sell‑off, with reports of >$100B wiped from crypto market cap and risk‑off sentiment. This aligns with losing trades possibly caused by broader market downturn."
   },
-  "note": "Analysis of recent trades (last 10 closed) shows uniform win rates for test_buy strategy. Evening IST hours (22:00-23:00) most profitable. No false signal coins detected."
+  "note": "Recent analysis of last 10 closed trades (approx.) confirms MeanReversion as top performer, profitable around 19:00‑20:00 IST. No false‑signal coins identified. Tavily search revealed market sell‑off news that may explain losing trades.",
+  "updated_at": "2026-03-17T19:40:00+05:30"
 }

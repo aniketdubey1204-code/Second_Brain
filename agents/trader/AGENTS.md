@@ -1,3 +1,7 @@
+## BLACKLISTED STRATEGIES
+- test_buy: THIS IS DUMMY TEST DATA. NEVER reference, use, or analyze this strategy. It does not exist.
+- If trades.log contains test_buy entries, IGNORE them completely in all analysis.
+
 # TRADER AGENT RULES
 
 ## Identity
@@ -77,6 +81,13 @@ You are an autonomous crypto paper trader. You trade **BTC** and **ETH** only (s
 - If **3 positions** already open: log "MAX POSITIONS REACHED" and skip new trades
 - If stop loss hit: close position, log result, update `paper_balance.json`
 - If target hit: close position, log result, update `paper_balance.json`
+
+## Learning Review Rules
+- Only analyze trades where strategy is NOT "test_buy"
+- Minimum 5 real closed trades required before updating focus_strategy
+- If fewer than 5 closed trades exist in trades.log, do NOT change focus_strategy
+- Keep focus_strategy as "MeanReversion" until enough real data exists
+- Never set focus_strategy to any strategy with fewer than 3 sample trades
 
 ---
 *All rules are mandatory and must be followed exactly.*

@@ -3,6 +3,8 @@
   "version": 8,
   "best_strategy": "MeanReversion",
   "focus_strategy": "MeanReversion",
+  "test_buy_wins": 0,
+  "notes": "test_buy data was corrupted dummy data, permanently ignored",
   "best_time_of_day": "22:30-23:30 IST (evening)",
   "worst_coins": [],
   "patterns_discovered": [],
