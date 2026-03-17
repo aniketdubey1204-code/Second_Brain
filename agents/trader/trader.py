@@ -88,6 +88,15 @@ def get_current_price(symbol):
         send_telegram(f"❌ Error fetching price for {symbol}: {str(e)}")
         return None
 
+def get_usd_to_inr_rate():
+    """Fetch live USD->INR rate, fallback to 83.5"""
+    try:
+        resp = requests.get("https://api.exchangerate-api.com/v4/latest/USD", timeout=5)
+        data = resp.json()
+        return float(data["rates"].get("INR", 83.5))
+    except Exception:
+        return 83.5
+
 def calculate_indicators(df):
     # stub – real logic can be added later
     return df
@@ -118,7 +127,7 @@ def check_risk_limits(positions, balance, daily_pnl):
 
 import uuid
 
-def record_trade(action, symbol, entry, sl, tp, regime, strategy, slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0):
+def record_trade(action, symbol, entry, sl, tp, regime, strategy, slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0, capital_used_inr=0.0, quantity=None):
     # action is direction e.g., "BUY" or "SELL"
     ts = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d %H:%M:%S IST")
     # Log with detailed fields for open trade
@@ -136,7 +145,8 @@ def record_trade(action, symbol, entry, sl, tp, regime, strategy, slippage_cost=
         pos_data = {"positions": []}
     positions = pos_data.get("positions", [])
     # Calculate quantity (size) – using same logic as before
-    quantity = calculate_position_size(bal["current_balance"], entry, sl)
+    if quantity is None:
+        quantity = calculate_position_size(bal["current_balance"], entry, sl)
     # Generate unique id for the position
     pos_id = str(uuid.uuid4())
     positions.append({
@@ -221,7 +231,17 @@ def run_market_scan():
                     tp = price * 1.043  # +4.3%
                     ok, reason = check_risk_limits(positions, bal, daily_pnl)
                     if ok:
-                        record_trade(act, sym, price, sl, tp, regime, "LondonBreakout", slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0)
+                        # Allocate capital: 5% of INR balance
+                        bal_json = load_json("paper_balance.json")
+                        capital_used_inr = bal_json["current_balance"] * 0.05
+                        bal_json["current_balance"] -= capital_used_inr
+                        save_json("paper_balance.json", bal_json)
+                        usd_rate = get_usd_to_inr_rate()
+                        capital_used_usd = capital_used_inr / usd_rate
+                        qty = round(capital_used_usd / price, 4)
+                        record_trade(act, sym, price, sl, tp, regime, "LondonBreakout",
+                                     slippage_cost=0.0, fee=0.0, gross_pnl=0.0, net_pnl=0.0,
+                                     capital_used_inr=capital_used_inr, quantity=qty)
                     continue
         # Normal regime detection
         regime = detect_regime(df)
@@ -281,21 +301,24 @@ def close_trade(position, exit_price, reason):
         actual_exit = exit_price * 0.9995  # sell slightly lower
     else:
         actual_exit = exit_price * 1.0005  # cover slightly higher
-    # Gross P&L
+    # Gross P&L in USD
     if direction.upper() == "BUY":
-        gross_pnl = (actual_exit - entry_price) * quantity
+        gross_pnl_usd = (actual_exit - entry_price) * quantity
     else:
-        gross_pnl = (entry_price - actual_exit) * quantity
-    # Fees (entry + exit)
-    trade_value = entry_price * quantity
-    entry_fee = trade_value * 0.0005
-    exit_fee = (actual_exit * quantity) * 0.0005
-    total_fee = entry_fee + exit_fee
-    # Net P&L
-    net_pnl = gross_pnl - total_fee
-    # Update balance
+        gross_pnl_usd = (entry_price - actual_exit) * quantity
+    # Fees in USD
+    trade_value_usd = entry_price * quantity
+    entry_fee_usd = trade_value_usd * 0.0005
+    exit_fee_usd = (actual_exit * quantity) * 0.0005
+    total_fee_usd = entry_fee_usd + exit_fee_usd
+    net_pnl_usd = gross_pnl_usd - total_fee_usd
+    # Convert to INR
+    usd_to_inr = get_usd_to_inr_rate()
+    net_pnl_inr = net_pnl_usd * usd_to_inr
+    # Capital used (return it) and update balance
+    capital_used = float(position.get("capital_used_inr", 0.0))
     balance = load_json("paper_balance.json")
-    balance["current_balance"] = balance.get("current_balance", 0) + (trade_value + net_pnl)
+    balance["current_balance"] = balance.get("current_balance", 0) + capital_used + net_pnl_inr
     balance["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M IST")
     save_json("paper_balance.json", balance)
     # Log closed trade
@@ -303,8 +326,8 @@ def close_trade(position, exit_price, reason):
     slippage_total = position.get("slippage_cost", 0.0) + abs(exit_price - actual_exit) * quantity
     log_line = (f"[CLOSED] [{ts}] | {position['symbol']} | {position['strategy']} | {position['regime']} | "
                 f"Entry: ₹{entry_price:.2f} | Exit: ₹{actual_exit:.2f} | "
-                f"Slippage: ₹{slippage_total:.2f} | Fee: ₹{total_fee:.2f} | "
-                f"Gross P&L: ₹{gross_pnl:.2f} | Net P&L: ₹{net_pnl:.2f} ({(net_pnl/trade_value)*100:.2f}%) | "
+                f"Slippage: ₹{slippage_total:.2f} | Fee: ₹{total_fee_usd * usd_to_inr:.2f} | "
+                f"Gross P&L: ₹{gross_pnl_usd * usd_to_inr:.2f} | Net P&L: ₹{net_pnl_inr:.2f} ({(net_pnl_usd / (entry_price * quantity))*100:.2f}%) | "
                 f"Reason: {reason}")
     with open(os.path.join(WORKSPACE, "trades.log"), "a", encoding="utf-8") as f:
         f.write(log_line + "\n")
@@ -315,21 +338,7 @@ def close_trade(position, exit_price, reason):
         positions = [p for p in positions if p.get("id") != position.get("id")]
         pos_data["positions"] = positions
         pos_data["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M IST")
-        save_json("open_positions.json", pos_data)
-    # Telegram alert
-    emoji = "🟢" if net_pnl > 0 else "🔴"
-    send_telegram(
-        f"{emoji} [PAPER] TRADE CLOSED\n"
-        f"Coin: {position['symbol']}\n"
-        f"Direction: {direction}\n"
-        f"Entry: ₹{entry_price:.2f} → Exit: ₹{actual_exit:.2f}\n"
-        f"Gross P&L: ₹{gross_pnl:.2f}\n"
-        f"Fees: ₹{total_fee:.2f}\n"
-        f"Net P&L: ₹{net_pnl:.2f} ({(net_pnl/trade_value)*100:.2f}%)\n"
-        f"Reason: {reason}\n"
-        f"Balance: ₹{balance['current_balance']:.2f}"
-    )
-    return net_pnl
+        save_json("
 
 def run_risk_monitor():
     # Iterate open positions and close if SL/TP hit
