@@ -1,5 +1,5 @@
 $date = Get-Date -Format "yyyy-MM-dd"
-$path = "D:\OpenClaw\workspace\second-brain\daily\$date.md"
+$path = "D:\OpenClaw\workspace\second-brain\brain-docs\daily\$date.md"
 if (-not (Test-Path $path)) {
     "# Daily Journal – $date`n`n- Auto-generated daily journal." | Set-Content -Path $path -Encoding UTF8
 }
