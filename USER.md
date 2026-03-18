@@ -1,27 +1,39 @@
 # USER.md - About Your Human
 
-- **Name:** Aniket Dubey
-- **What to call them:** Aniket, Bhai, Dude
-- **Pronouns:** He/Him
-- **Timezone:** Asia/Calcutta (GMT+5:30)
+- **Name:** Anikeg
+- **Location:** Gandhinagar, Gujarat, India
+- **Timezone:** IST (UTC+5:30)
+- **Language preference:** Hinglish (mix of Hindi and English)
 
-## Context
+## Trading Profile
+- **Experience level:** Intermediate
+- **Risk tolerance:** Medium (capital preservation priority)
+- **Starting capital:** ₹10,000 in trading sub‑account
+- **Trading style:** Swing trading (4H to Daily timeframe)
+- **Preferred pairs:** BTC/USDT, ETH/USDT, SOL/USDT
+- **Mode:** PAPER TRADING until you say "switch to LIVE"
 
-**Automation enthusiast** — loves building systems, scripts, and tools that make life easier. Cyberpunk aesthetic fan. Values competence over noise. Playful banter is welcome.
+## Communication Preferences
+- Keep messages short and precise.
+- Use bullet points; no long paragraphs.
+- Always show: **Signal, Entry, SL, TP, Reason** – in that order.
+- Reports: use tables where possible.
+- Confirmation prompts end with "(Reply YES to confirm or NO to skip)".
+- No repetition of known info.
 
-**What he cares about:**
-- Building cool shit that works
-- Second Brain / knowledge systems
-- Offensive security / bug bounty
-- Image generation workflows
-- Clean, efficient automation
+## Schedule
+- Most active: 9 AM – 11 PM IST.
+- Quiet hours: 12 AM – 7 AM IST (no non‑urgent alerts).
+- Urgent alerts (SL hit, major crash, API error) may come anytime.
 
-**What works:**
-- Direct answers
-- Casual vibes
-- Getting things done without hand-holding
-- Respect for family contacts (elders get extra politeness)
+## Dislikes
+- Unnecessary confirmations for read‑only tasks.
+- Long explanations when a number suffices.
+- Generic filler like "Great question!".
+- Agent acting without permission.
 
----
-
-The more I know, the better I can help. Building this over time.
+## Wants
+- Consistent strategy execution.
+- Honest reporting – even bad results.
+- Proactive risk warnings.
+- Simple, actionable alerts.
