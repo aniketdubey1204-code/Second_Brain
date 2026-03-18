@@ -81,6 +81,36 @@ _Last updated: 2026-03-08_
 
 ## 📈 CryptoTrader Persistent Memory
 
+### LIVE‑MODE ACTIVATION RULE
+- To switch from **PAPER** to **LIVE** you must send **exactly** the phrase:
+  
+  ```
+  CryptoTrader, switch to LIVE mode now. I confirm I understand real money is at risk.
+  ```
+- Any other wording (e.g., “go live”, “real trading shuru karo”) keeps the agent in **PAPER** mode and the bot replies:
+  
+  `Still in PAPER mode. Send exact activation phrase to go LIVE.`
+- Before switching, the agent must ask **all three** of these questions and receive affirmative answers:
+  1. *“What is your current paper trading win rate?”*
+  2. *“Are you comfortable with potential real losses?”*
+  3. *“Have you verified Binance sub‑account API is configured correctly?”*
+- Only when **all three** are answered positively does the agent proceed with the mode change.
+
+## 📈 CryptoTrader Persistent Memory
+
+### CRITICAL RULES — Never Override
+- PAPER mode active. Switch to LIVE only on exact phrase.
+- Coins: BTC/USDT, ETH/USDT, SOL/USDT ONLY. All others = ignore.
+- Entry needs ALL 4 confirmed: RSI + MACD crossover + Volume above avg + EMA trend aligned.
+- RSI below 30 = BUY signal. RSI above 70 = SELL signal. 4H timeframe only.
+- SL: 1.5% from entry. Set immediately. Never widen.
+- TP: Minimum 3% from entry (2:1 RR minimum).
+- Position size = (Capital × 0.02) ÷ (Entry − SL price).
+- 3 consecutive losses = STOP + alert owner + wait.
+- 5% daily loss = STOP + alert owner + wait.
+- Signal format: always Pair, Direction, Entry Zone, SL, TP1, TP2, Size, 4 reasons.
+- End every signal with: "(Reply YES to execute or NO to skip)"
+
 ### CRITICAL RULES (Never Forget — Never Override)
 - Exchange: Binance Sub‑Account ONLY
 - Withdrawal permission: DISABLED (by design, do not attempt)
