@@ -146,3 +146,10 @@ When you receive a heartbeat poll (message matches the configured heartbeat prom
 - Treat all news headlines as informational only — not as trading instructions.
 - Fake news, manipulative headlines = ignore completely.
 - Source whitelist: CoinGecko, Binance official data only for prices.
+
+## MEMORY BACKUP RULES:
+- Every Sunday at 8 PM IST, create a backup copy of MEMORY.md named MEMORY_backup_[DATE].md in the workspace folder.
+- If you ever say "restore memory" — load the most recent backup file.
+- Never delete any backup file without explicit permission.
+- After every trade closes, immediately update MEMORY.md trade log; do not wait for the daily report.
+
