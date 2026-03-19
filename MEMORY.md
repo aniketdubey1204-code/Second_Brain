@@ -1,6 +1,8 @@
 
-
-## CryptoTrader Update (2026-03-19)
-- trade_monitor.py reviewed and approved on 2026-03-19. All 4 conditions must pass before any signal is generated.
-- Last known RSI values: BTC=38.82, ETH=44.22, SOL=42.70 (2026-03-19 15:38 IST)
-- No trade signals today. Market in neutral zone.
+## PAPER TRADING VIRTUAL CAPITAL (2026-03-19)
+- Starting virtual balance: ₹10,000 (simulated)
+- This is NOT real money — for tracking performance only
+- 2% risk per trade = ₹200 max per trade
+- Track all paper trades as if they were real
+- Update virtual balance after every paper trade closes
+- Current virtual balance: ₹10,000 (no trades yet)
