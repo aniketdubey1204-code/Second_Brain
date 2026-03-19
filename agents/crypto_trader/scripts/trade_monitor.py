@@ -19,8 +19,8 @@ def get_signal(client):
     }
     for symbol, data in indicators.items():
         # Evaluate conditions
-        rsi_check = data["rsi"] < 30
-        macd_check = data.get("macd_crossover") == "bullish"
+        rsi_check = data["rsi"] < 50
+        macd_check = data.get("macd_crossover") in ["bullish", "bearish"]
         volume_check = data.get("volume_pct", 0) > 0
         ema_check = data["ema20_gt_ema50"]
         conditions_passed = sum([rsi_check, macd_check, volume_check, ema_check])

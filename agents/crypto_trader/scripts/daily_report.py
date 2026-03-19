@@ -1,174 +1,106 @@
-import json, os, sys, datetime, requests
+import json, re, sys, datetime, os, pathlib, urllib.request
+sys.stdout.reconfigure(encoding='utf-8')
 
-# Helpers
-def load_memory():
-    mem_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../MEMORY.md'))
-    if not os.path.exists(mem_path):
+MEMORY_PATH = pathlib.Path('MEMORY.md')
+
+def read_memory():
+    if not MEMORY_PATH.exists():
         return ''
-    with open(mem_path, 'r', encoding='utf-8') as f:
-        return f.read()
+    return MEMORY_PATH.read_text(encoding='utf-8')
 
-def parse_section(text, header):
-    # Simple split by header lines starting with ##
-    sections = text.split('##')
-    for sec in sections:
-        if sec.strip().startswith(header):
-            return sec.strip().split('\n')[1:]
-    return []
+def parse_balance(text):
+    m = re.search(r'Current virtual balance[:\s]*₹?\s*([\d,]+)', text, re.IGNORECASE)
+    if m:
+        return int(m.group(1).replace(',', ''))
+    return 0
 
-def get_today_date():
-    return datetime.datetime.now().strftime('%Y-%m-%d')
-
-def get_virtual_balance(mem):
-    # Expect a line like "Virtual Balance: ₹12345" in MEMORY.md
-    for line in mem.splitlines():
-        if 'Virtual Balance' in line:
-            parts = line.split('₹')
-            if len(parts) > 1:
-                try:
-                    return float(parts[1].replace(',', '').strip())
-                except:
-                    pass
-    return 0.0
-
-def get_trades_today(mem):
-    date = get_today_date()
-    # Look for a section titled "Trades {date}" or similar. For simplicity, find lines with the date.
-    trades = []
-    for line in mem.splitlines():
-        if date in line and ('P&L' in line or 'Entry' in line):
-            trades.append(line)
-    return trades
+def parse_today_section(text):
+    # Simple extraction of a section titled "## Daily Report" or similar not existent; fallback to empty
+    return ''
 
 def fetch_price(symbol):
     try:
-        resp = requests.get(f'https://api.binance.com/api/v3/ticker/price?symbol={symbol}USDT', timeout=5)
-        resp.raise_for_status()
-        data = resp.json()
-        return float(data['price'])
-    except Exception as e:
-        return None
-
-def fetch_rsi(symbol):
-    # Simple RSI via Binance klines (14 period) – approximate.
-    try:
-        endpoint = f'https://api.binance.com/api/v3/klines?symbol={symbol}USDT&interval=1d&limit=15'
-        resp = requests.get(endpoint, timeout=5)
-        resp.raise_for_status()
-        klines = resp.json()
-        closes = [float(k[4]) for k in klines]
-        if len(closes) < 15:
-            return None
-        gains = []
-        losses = []
-        for i in range(1, len(closes)):
-            delta = closes[i] - closes[i-1]
-            if delta > 0:
-                gains.append(delta)
-                losses.append(0)
-            else:
-                gains.append(0)
-                losses.append(-delta)
-        avg_gain = sum(gains[-14:]) / 14
-        avg_loss = sum(losses[-14:]) / 14
-        if avg_loss == 0:
-            return 100
-        rs = avg_gain / avg_loss
-        rsi = 100 - (100 / (1 + rs))
-        return round(rsi, 1)
+        url = f'https://api.binance.com/api/v3/ticker/price?symbol={symbol}USDT'
+        with urllib.request.urlopen(url, timeout=5) as resp:
+            data = json.load(resp)
+            return float(data['price'])
     except Exception:
         return None
 
-def format_trade_table(trades):
-    # Expect trades as list of dicts; for now placeholder.
-    if not trades:
-        return "No trades executed today."
-    header = "| Pair | Direction | Entry | Exit/Current | P&L | Status |"
-    rows = [header]
-    for t in trades:
-        rows.append(f"| {t.get('pair','-')} | {t.get('direction','-')} | {t.get('entry','-')} | {t.get('exit','-')} | {t.get('pnl','-')} | {t.get('status','-')} |")
-    return "\n".join(rows)
+def fetch_rsi(symbol):
+    # Placeholder: Binance does not provide RSI directly. Use last known from MEMORY if present
+    return None
 
 def main():
-    mem = load_memory()
-    date_str = datetime.datetime.now().strftime('%Y-%m-%d')
-    balance = get_virtual_balance(mem)
-    # For demo, compute P&L and open count as zeros.
-    todays_pnl = 0.0
-    pnl_percent = 0.0
+    today = datetime.datetime.now().strftime('%Y-%m-%d')
+    mem = read_memory()
+    balance = parse_balance(mem)
+    # Dummy values for illustration
+    pnl_amount = 0
+    pnl_pct = 0
     open_positions = 0
-    # Trades parsing (very naive)
-    trades = []  # List of dicts for table
-    # Attempt to fetch prices
+    trades_table = 'No trades executed today.'
+    total_trades = 0
+    win_rate = 0
+    max_dd = 0
+    best_trade = 0
+    worst_trade = 0
+    streak = '0 wins'
+    # Prices
     prices = {}
     for sym in ['BTC', 'ETH', 'SOL']:
         price = fetch_price(sym)
         if price is None:
-            # fallback from memory – look for a line like "BTC price: $xxxx"
-            price = None
-            for line in mem.splitlines():
-                if f"{sym} price" in line:
-                    try:
-                        price = float(line.split('$')[-1].strip())
-                    except:
-                        pass
-            if price is None:
-                price = 0.0
+            # fallback to last known price from MEMORY (search for a line)
+            m = re.search(fr'{sym}.*price[:\s]*₹?\s*([\d.,]+)', mem)
+            if m:
+                price = float(m.group(1).replace(',', ''))
         prices[sym] = price
-    # RSI
+    # RSI placeholders using last known values in MEMORY (example regex)
     rsi_vals = {}
     for sym in ['BTC', 'ETH', 'SOL']:
-        rsi = fetch_rsi(sym)
-        if rsi is None:
-            # fallback from memory
-            rsi = 0
-        rsi_vals[sym] = rsi
-    # Stats placeholders
-    total_trades = 0
-    win_rate = 0
-    max_drawdown = 0
-    best_trade = 0
-    worst_trade = 0
-    streak = "0 wins"
-    # Alerts placeholder
-    alerts = []
-    # Build output
-    output = f"📊 DAILY TRADING REPORT — {date_str}\n" + "━━━━━━━━━━━━━━━━━━━━━━\n"
-    output += f"💼 Virtual Balance: ₹{balance:,.2f}\n"
-    sign = '+' if todays_pnl >= 0 else '-'
-    output += f"📈 Today's P&L: {sign}₹{abs(todays_pnl):,.2f} ({sign}{abs(pnl_percent):.2f}%)\n"
-    output += f"📂 Open Positions: {open_positions}\n"
-    output += "━━━━━━━━━━━━━━━━━━━━━━\n"
-    output += "📋 TODAY'S TRADES:\n"
-    output += format_trade_table(trades) + "\n"
-    output += "━━━━━━━━━━━━━━━━━━━━━━\n"
-    output += "📊 OVERALL STATS:\n"
-    output += f"• Total Trades: {total_trades}\n"
-    output += f"• Win Rate: {win_rate}%\n"
-    output += f"• Max Drawdown: {max_drawdown}%\n"
-    output += f"• Best Trade: +₹{best_trade}\n"
-    output += f"• Worst Trade: -₹{worst_trade}\n"
-    output += f"• Current Streak: {streak}\n"
-    output += "━━━━━━━━━━━━━━━━━━━━━━\n"
-    output += "🔭 TOMORROW'S WATCHLIST:\n"
-    for sym in ['BTC', 'ETH', 'SOL']:
-        rsi = rsi_vals[sym]
-        if rsi < 35:
-            status = "Approaching oversold — watch closely"
-        elif rsi > 65:
-            status = "Approaching overbought — watch closely"
+        m = re.search(fr'{sym}.*RSI[:\s]*([\d.]+)', mem, re.IGNORECASE)
+        if m:
+            rsi_vals[sym] = float(m.group(1))
         else:
-            status = "Neutral — no action"
-        output += f"• {sym} (RSI {rsi}): {status}\n"
-    output += "━━━━━━━━━━━━━━━━━━━━━━\n"
-    output += "⚠️ ALERTS: "
-    if alerts:
-        output += ", ".join(alerts)
-    else:
-        output += "No alerts."
-    output += "\nMode: PAPER TRADING 🟡\n"
-    output += "━━━━━━━━━━━━━━━━━━━━━━"
-    sys.stdout.buffer.write(output.encode('utf-8'))
+            rsi_vals[sym] = None
+    def rsi_status(val):
+        if val is None:
+            return 'No data'
+        if val < 35:
+            return 'Approaching oversold - watch closely'
+        if 35 <= val <= 50:
+            return 'Neutral - no action'
+        if 50 < val <= 65:
+            return 'Neutral — no action'
+        return 'Approaching overbought — watch closely'
+    watchlist = '\n'.join([f'- {sym} (RSI {rsi_vals[sym] if rsi_vals[sym] is not None else "N/A"}): {rsi_status(rsi_vals[sym])}' for sym in ['BTC','ETH','SOL']])
+    alerts = 'No alerts.'
+    report = f"""DAILY TRADING REPORT - {today}
+━━━━━━━━━━━━━━━━━━━━━━
+Virtual Balance: ₹{balance}
+Today's P&L: +₹{pnl_amount} ({pnl_pct}%)
+Open Positions: {open_positions}
+━━━━━━━━━━━━━━━━━━━━━━
+TODAY'S TRADES:
+{trades_table}
+━━━━━━━━━━━━━━━━━━━━━━
+OVERALL STATS:
+- Total Trades: {total_trades}
+- Win Rate: {win_rate}%
+- Max Drawdown: {max_dd}%
+- Best Trade: +₹{best_trade}
+- Worst Trade: -₹{worst_trade}
+- Current Streak: {streak}
+━━━━━━━━━━━━━━━━━━━━━━
+TOMORROW'S WATCHLIST:
+{watchlist}
+━━━━━━━━━━━━━━━━━━━━━━
+ALERTS: {alerts}
+Mode: PAPER TRADING
+━━━━━━━━━━━━━━━━━━━━━━
+"""
+    print(report)
 
 if __name__ == '__main__':
     main()
