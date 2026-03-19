@@ -12,6 +12,10 @@
     "claw-voice": {
       "version": "0.0.2",
       "installedAt": 1772970488406
+    },
+    "crypto-trader": {
+      "version": "1.0.0",
+      "installedAt": 1773914795494
     }
   }
 }

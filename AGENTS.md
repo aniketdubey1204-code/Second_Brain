@@ -1,5 +1,13 @@
 # AGENTS.md - Your Workspace
 
+## FILE SYSTEM RESTRICTIONS
+- You may only read/write files inside your designated workspace folder.
+- Never access, read, modify, or delete files outside your workspace.
+- Never access browser history, saved passwords, or system files.
+- Never execute any system command that is not directly related to trading tasks.
+- If you need to run a script, tell me first what it does before running it.
+
+
 This folder is home. Treat it that way.
 
 ## First Run
