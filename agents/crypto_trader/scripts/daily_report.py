@@ -1,5 +1,42 @@
 import json, re, sys, datetime, os, pathlib, urllib.request
 sys.stdout.reconfigure(encoding='utf-8')
+import pathlib
+sys.path.append(str(pathlib.Path(__file__).parents[3]))
+import importlib.util, os, urllib.request, json
+
+# Simple fetch of recent candles from Binance
+def fetch_candles(symbol, interval='4h', limit=14):
+    try:
+        url = f'https://api.binance.com/api/v3/klines?symbol={symbol}USDT&interval={interval}&limit={limit}'
+        with urllib.request.urlopen(url, timeout=5) as resp:
+            data = json.load(resp)
+            return data  # each entry is a list, 4th index is close price
+    except Exception:
+        return []
+
+# Calculate RSI (14 period) from candle data
+def calc_rsi(candles, period=14):
+    if not candles or len(candles) < period + 1:
+        return None
+    closes = [float(c[4]) for c in candles]
+    gains = []
+    losses = []
+    for i in range(1, period+1):
+        delta = closes[i] - closes[i-1]
+        if delta > 0:
+            gains.append(delta)
+            losses.append(0)
+        else:
+            gains.append(0)
+            losses.append(-delta)
+    avg_gain = sum(gains) / period
+    avg_loss = sum(losses) / period
+    if avg_loss == 0:
+        return 100.0
+    rs = avg_gain / avg_loss
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+sys.stdout.reconfigure(encoding='utf-8')
 
 MEMORY_PATH = pathlib.Path('MEMORY.md')
 
@@ -74,18 +111,38 @@ def main():
         if 50 < val <= 65:
             return 'Neutral — no action'
         return 'Approaching overbought — watch closely'
-    watchlist = '\n'.join([f'- {sym} (RSI {rsi_vals[sym] if rsi_vals[sym] is not None else "N/A"}): {rsi_status(rsi_vals[sym])}' for sym in ['BTC','ETH','SOL']])
+
+    # Build watchlist using live RSI from trade_monitor
+    watchlist_lines = []
+    for sym in ['BTC','ETH','SOL']:
+        candles = fetch_candles(sym, interval='4h', limit=14)
+        rsi = calc_rsi(candles)
+        if rsi is None:
+            rsi_display = 'N/A'
+            status = 'No data'
+        else:
+            rsi_display = f"{rsi:.2f}"
+            if rsi < 35:
+                status = '🔴 Approaching oversold — watch closely'
+            elif rsi <= 50:
+                status = '🟡 Neutral zone'
+            elif rsi <= 65:
+                status = '🟡 Neutral zone'
+            else:
+                status = '🔴 Approaching overbought — watch closely'
+        watchlist_lines.append(f'- {sym} (RSI {rsi_display}): {status}')
+    watchlist = '\n'.join(watchlist_lines)
     alerts = 'No alerts.'
-    report = f"""DAILY TRADING REPORT - {today}
+    report = f"""📊 DAILY TRADING REPORT — {today}
 ━━━━━━━━━━━━━━━━━━━━━━
-Virtual Balance: ₹{balance}
-Today's P&L: +₹{pnl_amount} ({pnl_pct}%)
-Open Positions: {open_positions}
+💼 Virtual Balance: ₹{balance}
+📈 Today's P&L: +₹{pnl_amount} ({pnl_pct}%)
+📂 Open Positions: {open_positions}
 ━━━━━━━━━━━━━━━━━━━━━━
-TODAY'S TRADES:
+📋 TODAY'S TRADES:
 {trades_table}
 ━━━━━━━━━━━━━━━━━━━━━━
-OVERALL STATS:
+📊 OVERALL STATS:
 - Total Trades: {total_trades}
 - Win Rate: {win_rate}%
 - Max Drawdown: {max_dd}%
@@ -93,11 +150,11 @@ OVERALL STATS:
 - Worst Trade: -₹{worst_trade}
 - Current Streak: {streak}
 ━━━━━━━━━━━━━━━━━━━━━━
-TOMORROW'S WATCHLIST:
+🔭 TOMORROW'S WATCHLIST:
 {watchlist}
 ━━━━━━━━━━━━━━━━━━━━━━
-ALERTS: {alerts}
-Mode: PAPER TRADING
+⚠️ ALERTS: {alerts}
+🟡 Mode: PAPER TRADING
 ━━━━━━━━━━━━━━━━━━━━━━
 """
     print(report)
