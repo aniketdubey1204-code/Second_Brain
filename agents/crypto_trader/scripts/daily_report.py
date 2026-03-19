@@ -1,8 +1,9 @@
-import json, re, sys, datetime, os, pathlib, urllib.request
+import json, re, sys, datetime, os, pathlib, urllib.request, pandas as pd
 sys.stdout.reconfigure(encoding='utf-8')
 import pathlib
 sys.path.append(str(pathlib.Path(__file__).parents[3]))
 import importlib.util, os, urllib.request, json
+from trade_monitor import load_config
 
 # Simple fetch of recent candles from Binance
 def fetch_candles(symbol, interval='4h', limit=14):
@@ -93,45 +94,39 @@ def main():
             if m:
                 price = float(m.group(1).replace(',', ''))
         prices[sym] = price
-    # RSI placeholders using last known values in MEMORY (example regex)
-    rsi_vals = {}
-    for sym in ['BTC', 'ETH', 'SOL']:
-        m = re.search(fr'{sym}.*RSI[:\s]*([\d.]+)', mem, re.IGNORECASE)
-        if m:
-            rsi_vals[sym] = float(m.group(1))
-        else:
-            rsi_vals[sym] = None
-    def rsi_status(val):
-        if val is None:
-            return 'No data'
-        if val < 35:
-            return 'Approaching oversold - watch closely'
-        if 35 <= val <= 50:
-            return 'Neutral - no action'
-        if 50 < val <= 65:
-            return 'Neutral — no action'
-        return 'Approaching overbought — watch closely'
+    # Get live watchlist RSI using Binance client
+    from binance import Client
+    cfg = load_config()
+    client = Client(cfg['api_key'], cfg['api_secret'])
 
-    # Build watchlist using live RSI from trade_monitor
-    watchlist_lines = []
-    for sym in ['BTC','ETH','SOL']:
-        candles = fetch_candles(sym, interval='4h', limit=14)
-        rsi = calc_rsi(candles)
-        if rsi is None:
-            rsi_display = 'N/A'
-            status = 'No data'
-        else:
-            rsi_display = f"{rsi:.2f}"
-            if rsi < 35:
-                status = '🔴 Approaching oversold — watch closely'
-            elif rsi <= 50:
-                status = '🟡 Neutral zone'
-            elif rsi <= 65:
-                status = '🟡 Neutral zone'
-            else:
-                status = '🔴 Approaching overbought — watch closely'
-        watchlist_lines.append(f'- {sym} (RSI {rsi_display}): {status}')
-    watchlist = '\n'.join(watchlist_lines)
+    def get_watchlist_rsi(client):
+        pairs = {
+            "BTC": "BTCUSDT",
+            "ETH": "ETHUSDT",
+            "SOL": "SOLUSDT"
+        }
+        results = {}
+        for name, symbol in pairs.items():
+            try:
+                raw = client.get_klines(symbol=symbol, interval="4h", limit=50)
+                closes = pd.Series([float(c[4]) for c in raw])
+                # reuse calc_rsi that accepts a list; we adapt it to Series
+                rsi_val = calc_rsi([c for c in raw])
+                if rsi_val is None:
+                    raise ValueError('RSI calculation failed')
+                rsi_val = round(rsi_val, 2)
+                if rsi_val < 35:
+                    label = "🔴 Approaching oversold — watch closely"
+                elif rsi_val > 65:
+                    label = "🔴 Approaching overbought — watch closely"
+                else:
+                    label = "🟡 Neutral zone"
+                results[name] = {"rsi": rsi_val, "label": label}
+            except Exception as e:
+                results[name] = {"rsi": "ERR", "label": f"⚠️ Failed: {e}"}
+        return results
+
+    watchlist = get_watchlist_rsi(client)
     alerts = 'No alerts.'
     report = f"""📊 DAILY TRADING REPORT — {today}
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -151,7 +146,9 @@ def main():
 - Current Streak: {streak}
 ━━━━━━━━━━━━━━━━━━━━━━
 🔭 TOMORROW'S WATCHLIST:
-{watchlist}
+- BTC (RSI {watchlist['BTC']['rsi']}): {watchlist['BTC']['label']}
+- ETH (RSI {watchlist['ETH']['rsi']}): {watchlist['ETH']['label']}
+- SOL (RSI {watchlist['SOL']['rsi']}): {watchlist['SOL']['label']}
 ━━━━━━━━━━━━━━━━━━━━━━
 ⚠️ ALERTS: {alerts}
 🟡 Mode: PAPER TRADING
